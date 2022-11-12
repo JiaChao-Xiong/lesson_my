@@ -1,0 +1,44 @@
+page{
+  position: relative;
+  width: 100vw; /*相对单位 viewport width*/
+  height: 100vh;
+}
+.container{
+  position: absolute;
+  padding: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  height: 90%;
+  border: 1px solid red;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 5px;
+  text-align: center;
+}
+.title{
+  color: red;
+  font-size: 20px;
+}
+.a{
+  width: 80vw;
+  margin: 30px auto;
+}
+button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.b1{
+  float: left;
+  width: 48% !important;
+  font-size: 18px;
+  background-color: rgb(255, 187, 0);
+}
+.b2{
+  float: right;
+  width: 48% !important;
+  font-size: 18px;
+  background-color: rgb(255, 187, 0);
+}

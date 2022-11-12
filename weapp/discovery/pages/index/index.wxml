@@ -1,0 +1,16 @@
+<!-- 写页面结构的地方 -->
+<!-- view相当于div -->
+<view class="container">
+  <navigator url="../detail/index">
+    <text class="title">
+      {{title}}
+    </text>
+  </navigator>
+  <!-- <text class="title">{{title}}</text>  -->
+  <image src='{{car}}' class="car"/>
+  <text>全新一代发现</text>
+  <view class="a">
+    <button class="b1">预约试驾</button>
+    <button class="b2">了解更多</button>
+  </view>
+</view>
