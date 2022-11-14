@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS 具有强大的表现力
+        // const ? js 定义常量 关键字，保留字   定义时要初始化
+        // let 定义变量  let、var 区别 
+        // es6 let定义变量
+        // let 老版本既定义变量也定义常量
+        if(true) {
+            // 块级作用域
+            let  a;
+            a =10;
+            a++
+        }
+        //显示a未被定义
+        // console.log(a); //全局作用域
+
+        if(true) {
+            var  b;
+            b =10;
+            b++
+        }
+        //显示b为11
+        console.log(b); 
+
+        const duck = {
+            sing() {
+                console.log('嘎嘎嘎');
+            }
+        }
+        // 接口
+        const bird = {
+            sing() {
+                console.log("嘎嘎嘎");
+            }
+        }
+        const chior = []; //合唱团
+        for(let i = 0;i < 999;i++) {
+            chior.push(duck);
+        }
+        if(typeof bird.sing == "function"){
+            chior.push(bird)
+        }
+        if(chior.length >= 1000) {
+            console.log("合唱团招募成功！")
+        }else {
+            console.log("继续招募")
+        }
+        console.log(chior.length);
+    </script>
+</body>
+</html>
