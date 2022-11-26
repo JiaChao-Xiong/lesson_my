@@ -1,0 +1,24 @@
+image {
+    max-width: 100%;
+  }
+  .container {
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .wp_cell {
+    display:flex;
+  }
+  .wp_cell__hd {
+  }
+  .wp_cell__bd {
+    /* 主要元素 */
+    flex: 1;
+  }
+  .wp_cell__ft {
+  }
+  

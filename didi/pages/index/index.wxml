@@ -1,0 +1,22 @@
+<view class="container">
+  <!-- 地图组件 -->
+  <map 
+    id="myMap"
+    class="map"
+    latitude='{{latitude}}' 
+    longitude='{{longitude}}'
+    scale='16'
+    show-location
+    markers='{{markers}}'
+  >
+    <cover-view class="top-tips">
+      <cover-image class="top-icon" src="/images/top-tip.png" />
+      <cover-view class="top-text">青桔单车</cover-view>
+    </cover-view>
+    <cover-image 
+      bindtap="toReset"
+      src="/images/reset.png"
+      class="map-icon map-icon_reset">
+    </cover-image>
+  </map>
+</view>

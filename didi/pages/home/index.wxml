@@ -1,0 +1,30 @@
+<view class="container">
+  <scroll-view scroll-y="{{true}}">
+    <block wx:for="{{movies}}" wx:key="id">
+      <view class="wp_cell movie-list">
+        <view class="wp_cell__hd">
+          <image src="{{item.pic}}"></image>
+        </view>
+        <view class="wp_cell__bd">
+          <view class="title">
+            <text>{{item.title}}</text>
+          </view>
+          <view class="sub_title">
+            <text>{{item.subTitle}}</text>
+          </view>
+          <view class="sub_title">
+            <text>{{item.author}}</text>
+          </view>
+        </view>
+        <view class="wp_cell__ft">
+          <view>
+            <text class="score">{{item.score}}</text>
+          </view>
+          <view>
+            <text class="action">{{item.action}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+</view>
