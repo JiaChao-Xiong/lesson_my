@@ -1,0 +1,11 @@
+/* 全局样式 */
+.container{
+    height: 100%;
+    padding: 0;
+}
+
+page{
+    width: 100%;
+    overflow-x: hidden;
+    background: #12203c;
+}

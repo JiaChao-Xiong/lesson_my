@@ -1,0 +1,35 @@
+<!-- 
+  数据驱动得界面
+  模板 {{占位符}} 编译之后（data） 页面-->
+  <!-- 先写结构， 再写样式 -->
+  <view class="container">
+  <view class="page-section-spacing scrollH">
+    <!-- 滚动的内容 -->
+    <scroll-view  class="scroll-view_H" scroll-x="true" >
+      <view class="scroll-view-item_H"
+      wx:key="text"
+       wx:for="{{nav}}">
+        <text class="navItem">{{item.text}}</text>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="heroList">
+    <scroll-view 
+      scroll-y="true" 
+      style="height:1040rpx;"
+    >
+      <view class="heroItem">
+        <view 
+          class="hItem" 
+          wx:for="{{heroList}}"
+          wx:key="heroid"
+        >
+          <image 
+            class="hItemimg"
+            src="https:{{item.heroimg}}"
+          />
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

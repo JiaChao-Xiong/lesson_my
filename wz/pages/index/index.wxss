@@ -1,0 +1,56 @@
+/* 当前页面 */
+.page-section-spacing {
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    color: #fff;
+    /* 立体感 */
+    box-shadow: 0 0.01rem 0.18rem rgba(0, 0, 0, 0.6);
+}
+.scroll-view_H{
+    /* nowrap 不要换行 */
+    white-space: nowrap;
+}
+.scroll-view-item_H {
+    display: inline-block;
+    /* 高度和行高一样 文字居中 */
+    height: 70rpx;
+    line-height: 70rpx;
+    font-size: 10pt;/* 字体 用pt */
+}
+.navItem {
+    padding: 0 10px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+}
+
+/* 英雄列表 */
+.heroList{
+    width: 100%;
+}
+.heroItem{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10rpx;
+}
+
+.heroItem .hItem{
+    width: 45%;
+    height: 450rpx;
+    background: transparent;
+    margin: 10rpx;
+}
+
+.heroItem .hItem:nth-of-type(2n) {
+    float: right;
+}
+
+.heroItem .hItem:nth-of-type(2n-1) {
+    float: left;
+}
+
+.hItemimg {
+    width: 100%;
+    height: 100%;
+}
