@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #nv1 {
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #nv2 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="nv1">
+        <div id="nv2">
+
+        </div>
+    </div>
+    <script>
+        document.getElementById('nv1').addEventListener('click', function() {
+            console.log('nv1');
+        })
+        document.getElementById('nv2').addEventListener('click', function() {
+            console.log('nv2');
+        },true)
+    </script>
+</body>
+</html>
