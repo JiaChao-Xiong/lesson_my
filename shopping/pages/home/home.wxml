@@ -1,0 +1,27 @@
+<!-- 每个页面的不同点 home -->
+<view class='home'>
+  <view hidden='{{!showTabControl}}'>
+    <!-- 不是小程序的内置组件，自定义组件
+        内置组件不满足需求，复用
+     -->
+     <!-- titles 属性，page 和组件之间通过属性传递
+        提升组件的定制能力 抽象
+      -->
+    <w-tab-control class='tab-control-temp' 
+                 titles="{{titles}}" 
+                 bind:tabclick="tabClick"
+    />
+  </view>
+  <!-- bindscrolltolower 滚动到底部加载 
+        scroll-top 0 回到顶部
+    -->
+  <scroll-view class='content' 
+    scroll-y 
+    bindscrolltolower="loadMore"
+    scroll-with-animation="true"
+    scroll-top="{{topPosition}}"
+    bindscroll="scrollPosition">
+    <!-- banners 广告位  -->
+    <w-swiper images="{{banners}}"/>
+  </scroll-view>
+</view>
