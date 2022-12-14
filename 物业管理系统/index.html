@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-4.6.2-dist/css/bootstrap.css">
+    <script src="./vue.js"></script>
+    <script src="./jquery-3.6.1.js"></script>
+    <script src="./bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body,html {
+        height: 100%;
+    }
+    #bar::-webkit-scrollbar {
+        display: none;
+    }
+    #bar1::-webkit-scrollbar {
+        display: none;
+    }
+    #tet::-webkit-scrollbar {
+        display: none;
+    }
+    #tets::-webkit-scrollbar {
+        display: none;
+    }
+    label {
+        width: 130px;
+    }
+    input {
+        width: 130px;
+    }
+    table{
+        color: #FFA00A;
+    }
+    .wrapper .inner p,li{
+        color: #FFA00A;
+    }
+    label{
+        color: #76cfe6;
+    }
+    tr:nth-child(2n) {
+        background-color:rgba(214, 188, 154,0.3)
+    }
+    
+    
+
+
+
+
+
+    #index{
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        background-image: linear-gradient(#a18cd1 0%, #9dcbe2 100%);
+        background-size: cover;
+        flex: 1;
+        align-items: center;
+    }
+    .select {
+        display: flex;
+        padding-left: 180px;
+        justify-content: space-between;
+        width: 60%;
+    }
+    .selectUser{
+        flex: 1;
+        width: 100px;
+    }
+    .tab {
+        display: flex;
+    }
+    .tab .btn2 {
+        flex: 1;
+        font-size: 20px;
+        border-top-right-radius: 25px;
+        height: 50px;
+        border: none;
+        background-color: rgba(87, 86, 86, 0.2);
+    }
+    .tab .btn1 {
+        flex: 1;
+        font-size: 20px;
+        border-top-left-radius: 25px;
+        height: 50px;
+        border-bottom: 3px solid #FFA00A;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background-color: rgba(87, 86, 86, 0.2);
+    }
+    .login{
+        text-align: center;
+        margin: 0 auto;
+        width: 600px;
+        height: 520px;
+        background-color: rgba(87, 86, 86, 0.2);
+        border-radius: 25px;
+        box-shadow: 5px 2px 35px -7px #ff9a9e;
+    }
+    .login h2{
+        margin-top: 40px;
+        color: aliceblue;
+        font-weight: 100;
+    }
+    .login_form{
+        padding: 20px;
+    }
+    .login_form span{
+        color: rgb(131, 220, 255);
+        font-size: 18px;
+        font-weight: 100;
+    }
+    .login_form input{
+        background-color: transparent;
+        width: 320px;
+        padding: 2px;
+        text-indent: 2px;
+        color: white;
+        font-size: 20px;
+        height: 45px;
+        margin: 30px 30px 30px 5px;
+        outline: none;
+        border: 0;
+        border-bottom: 1px solid rgb(131, 220, 255);
+    }
+    input::placeholder{
+        /* color: #9ce5f1; */
+        font-weight: 100;
+        font-size: 18px;
+        font-style: italic;
+    }
+    .login_btn{
+        background-color: rgba(255, 255, 255, 0.582);
+        border: 1px solid rgb(190, 225, 255);
+        padding: 10px;
+        width: 240px;
+        height: 60px;
+        border-radius: 30px;
+        font-size: 30px;
+        color: rgb(100, 183, 255);
+        font-weight: 100;       
+        /* margin-top: 15px; */
+        margin: 15px 30px 0;
+    }
+    .login_btn:hover{
+        box-shadow: 2px 2px 15px 2px rgb(190, 225, 255);
+        background-color: transparent;
+        color: white;
+        /* 选择动画 */
+        animation: login_mation 0.5s;
+    }
+
+    /* 定义动画 */
+    @keyframes login_mation
+    {
+        from {
+            background-color: rgba(255, 255, 255, 0.582);
+            box-shadow: 0px 0px 15px 2px rgb(190, 225, 255);
+        }
+        to {
+            background-color: transparent;
+            color: white;
+            box-shadow: 2px 2px 15px 2px rgb(190, 225, 255);
+        }
+    }
+
+    
+</style>
+
+
+
+
+<body class="container-fluid">
+<div id="app" class="h-100 overflow-hidden"> 
+    <div id="index"> 
+        <div class="login" id="indexall">
+            <!-- <h2>登陆|注册</h2> -->
+            <div class="tab">
+                <button class="btn1" id="btn1" onclick="login()">登录</button><button class="btn2" id="btn2" onclick="sign()">注册</button>
+            </div>
+            <form id="login">
+                <div class="login_form">
+                    <span>账号：</span>
+                    <input type="text" placeholder="请输入账号">
+                    <br>
+                    <span>密码：</span>
+                    <input type="password" placeholder="请输入密码">
+                </div>
+                <div class="select">
+                    <div class="selectUser">
+                        <input type="radio" name="user" id="user"><label for="user">用户</label>
+                    </div>
+                    <div class="selectUser">
+                        <input type="radio" name="user" id="admin"><label for="admin">管理员</label>
+                    </div>
+                </div>
+                <div class="btn">
+                    <button class="login_btn" type="button" onclick="skip()">登 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                </div>
+            </form>
+            <form id="sign" style="display: none;">
+                <div class="login_form">
+                    <span>姓名：</span>
+                    <input type="text" placeholder="请输入姓名">
+                    <br>
+                    <span>密码：</span>
+                    <input type="password" placeholder="请输入密码">
+                    <br>
+                    <span>手机号：</span>
+                    <input type="text" placeholder="请输入手机号">
+                    <br>
+                    <span>邮箱：</span>
+                    <input type="email" placeholder="请输入邮箱">
+                </div>
+                <div class="btn">
+                    <button class="login_btn">注 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+   
+    <div id="first" style="display: none;height: 100%;">
+        <div class="d-flex bg-light h-100">
+            <div class="bg-dark text-white" style="min-width: 160px;">
+                <h4 class="px-2 font-weight-bolder">物业管理系统</h4>
+                <div class="h-100" id="bar" style="overflow-y: auto;">
+                <nav class="navbar p-0 navbar-light bg-dark flex-column pb-5">
+                    <button class="bg-dark border-0 w-100 text-left">
+                        <a class="nav-link text-white font-weight-bold" style="font-size: 20px;" @click="tab(none)">首页</a>
+                    </button>
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#user"
+                            data-toggle="collapse">业主管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="user">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" @click="tab(0)">业主列表</a></button>
+                            </li>
+                            <!-- <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#">添加业主</a></button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#call"
+                            data-toggle="collapse">公告管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="call">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" @click="tab(1)">公告列表</a></button>
+                            </li>
+                            <!-- <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" data-toggle="pill">发布公告</a></button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#build"
+                            data-toggle="collapse">楼栋管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="build">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" @click="tab(2)">楼栋列表</a></button>
+                            </li>
+                            <!-- <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" data-toggle="pill">新增楼栋</a></button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#home"
+                            data-toggle="collapse">住宅管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="home">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(3)">住宅列表</a></button>
+                            </li>
+                            <!-- <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" data-toggle="pill">添加住宅</a></button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#comp"
+                            data-toggle="collapse">投诉管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="comp">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(4)">投诉列表</a></button>
+                            </li>
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(5)">留言</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#car"
+                            data-toggle="collapse">车位管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="car">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(6)">车位列表</a></button>
+                            </li>
+                            <!-- <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" data-toggle="pill">出租车位</a></button>
+                            </li> -->
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#service"
+                            data-toggle="collapse">维修管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="service">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(7)">维修列表</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#cost"
+                            data-toggle="collapse">费用管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="cost">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(8)">缴费记录</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#pwd"
+                            data-toggle="collapse">个人信息</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="pwd">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(9)">个人信息</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left">
+                        <a class="nav-link text-white font-weight-bold" style="font-size: 20px;" onclick="display()">退出</a>
+                    </button>
+
+                </nav>
+                </div>
+            </div>
+            <div class="flex-grow-1 h-100">
+                <div class="d-flex">
+                    <div class="ml-3 align-self-center">社区物业管理系统</div>
+                    <div class="flex-grow-1 align-self-center text-right">欢迎使用：admin</div>
+                </div>
+                <div class="h-100 p-5" id="bar1" style="overflow-y: auto;background-image: url('./image/R-C.gif');">
+                    <template>
+                        <div v-show="key[0].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id" :disabled="flag"></label>
+                                <label>姓名<input type="text" v-model="name"></label>
+                                <label>手机号<input type="text" v-model="tele"></label>
+                                <label>性别<input type="text" v-model="sex"></label>
+                                <label>门牌号<input type="text" v-model="door"></label>
+                                <button @click="handleAdd(0)">提交</button>
+                                <button @click="cancel(0)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords" placeholder="姓名"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>姓名</th>
+                                    <th>手机号</th>
+                                    <th>性别</th>
+                                    <th>门牌号</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id" v-for=" (item,index1) in fillPersons">
+                                        <td>{{item.id}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.tele}}</td>
+                                        <td>{{item.sex}}</td>
+                                        <td>{{item.door}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id,0)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id,0)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[1].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id1" :disabled="flag1"></label>
+                                <label>公告标题<input type="text" v-model="title"></label>
+                                <label>发布时间<input type="text" v-model="time"></label>
+                                <label>公告内容<input type="text" v-model="content"></label>
+                                <button @click="handleAdd(1)">提交</button>
+                                <button @click="cancel(1)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords1" placeholder="标题"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>公告标题</th>
+                                    <th>发布时间</th>
+                                    <th>公告内容</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id1" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id1}}</td>
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td>{{item.content}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id1,1)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id1,1)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[2].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id2" :disabled="flag2"></label>
+                                <label>楼栋<input type="text" v-model="bName"></label>
+                                <button @click="handleAdd(2)">提交</button>
+                                <button @click="cancel(2)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords2" placeholder="分类"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>分类</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id2" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id2}}</td>
+                                        <td>{{item.bName}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id2,2)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id2,2)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[3].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id3" :disabled="flag3"></label>
+                                <label>门牌号<input type="text" v-model="door"></label>
+                                <label>楼栋<input type="text" v-model="bName"></label>
+                                <label>价格/m^2<input type="text" v-model="price"></label>
+                                <label>规格<input type="text" v-model="size"></label>
+                                <label>面积<input type="text" v-model="area"></label>
+                                <label>入住<input type="text" v-model="into"></label>
+                                <label>户主<input type="text" v-model="host"></label>
+                                <button @click="handleAdd(3)">提交</button>
+                                <button @click="cancel(3)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords3" placeholder="门牌号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>门牌号</th>
+                                    <th>楼栋</th>
+                                    <th>价格/m^2</th>
+                                    <th>规格</th>
+                                    <th>面积</th>
+                                    <th>入住</th>
+                                    <th>户主</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id3" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id3}}</td>
+                                        <td>{{item.door}}</td>
+                                        <td>{{item.bName}}</td>
+                                        <td>{{item.price}}</td>
+                                        <td>{{item.size}}</td>
+                                        <td>{{item.area}}</td>
+                                        <td>{{item.into}}</td>
+                                        <td>{{item.host}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id3,3)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id3,3)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[4].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id4" :disabled="flag4"></label>
+                                <label>投诉人<input type="text" v-model="cname"></label>
+                                <label>投诉时间<input type="text" v-model="ctime"></label>
+                                <label>投诉原因<input type="text" v-model="reason"></label>
+                                <label>处理状态<input type="text" v-model="now"></label>
+                                <label>处理时间<input type="text" v-model="rtime"></label>
+                                <button @click="handleAdd(4)">提交</button>
+                                <button @click="cancel(4)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords4" placeholder="编号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>投诉人</th>
+                                    <th>投诉时间</th>
+                                    <th>投诉原因</th>
+                                    <th>处理状态</th>
+                                    <th>处理时间</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id4" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id4}}</td>
+                                        <td>{{item.cname}}</td>
+                                        <td>{{item.ctime}}</td>
+                                        <td>{{item.reason}}</td>
+                                        <td>{{item.now}}</td>
+                                        <td>{{item.rtime}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id4,4)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id4,4)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[5].show" class="h-100">
+                             <!-- 外部容器 -->
+                            <div class="wrapper h-100">
+                                <!-- 内部容器 -->
+                                <div class="inner w-100 mx-auto h-100">
+                                    <div>
+                                        <!-- 输入留言区域 -->
+                                        <textarea name="txt" class="w-75" id="txt" cols="80" rows="5"></textarea>
+                                        <!-- 统计文本域中的字数 -->
+                                        <p id="text">已输入字数：
+                                            <span id="text-now">0</span>/100
+                                        </p>
+                                        <!-- 提交留言按钮 -->
+                                        <input type="button" id="btn" value="提交留言"> 
+                                    </div>
+                                    <div class="h-50 overflow-hidden">
+                                    <p>留言列表</p>
+                                    <!-- 呈现留言区域 -->
+                                    <ul id="tet" class="w-75 h-100 pb-5 overflow-auto">
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[6].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id6" :disabled="flag6"></label>
+                                <label>位置<input type="text" v-model="position"></label>
+                                <label>车租费<input type="text" v-model="yprice"></label>
+                                <label>是否空余<input type="text" v-model="isNull"></label>
+                                <label>开始时间<input type="text" v-model="stime"></label>
+                                <label>到期时间<input type="text" v-model="etime"></label>
+                                <label>业主姓名<input type="text" v-model="carHost"></label>
+                                <button @click="handleAdd(6)">提交</button>
+                                <button @click="cancel(6)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords6" placeholder="编号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>位置</th>
+                                    <th>车租费</th>
+                                    <th>是否空余</th>
+                                    <th>开始时间</th>
+                                    <th>到期时间</th>
+                                    <th>业主姓名</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id6" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id6}}</td>
+                                        <td>{{item.position}}</td>
+                                        <td>{{item.yprice}}</td>
+                                        <td>{{item.isNull}}</td>
+                                        <td>{{item.stime}}</td>
+                                        <td>{{item.etime}}</td>
+                                        <td>{{item.carHost}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id6,6)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id6,6)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[7].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id7" :disabled="flag7"></label>
+                                <label>维修人<input type="text" v-model="wname"></label>
+                                <label>维修时间<input type="text" v-model="wtime"></label>
+                                <label>维修原因<input type="text" v-model="wreason"></label>
+                                <label>门牌号<input type="text" v-model="wnum"></label>
+                                <label>处理状态<input type="text" v-model="wnow"></label>
+                                <label>处理时间<input type="text" v-model="wetime"></label>
+                                <button @click="handleAdd(7)">提交</button>
+                                <button @click="cancel(7)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords7" placeholder="编号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>维修人</th>
+                                    <th>维修时间</th>
+                                    <th>维修原因</th>
+                                    <th>门牌号</th>
+                                    <th>处理状态</th>
+                                    <th>处理时间</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id7" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id7}}</td>
+                                        <td>{{item.wname}}</td>
+                                        <td>{{item.wtime}}</td>
+                                        <td>{{item.wreason}}</td>
+                                        <td>{{item.wnum}}</td>
+                                        <td>{{item.wnow}}</td>
+                                        <td>{{item.wetime}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id7,7)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id7,7)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[8].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id8" :disabled="flag8"></label>
+                                <label>缴费人<input type="text" v-model="fname"></label>
+                                <label>缴费时间<input type="text" v-model="ftime"></label>
+                                <label>缴费金额<input type="text" v-model="spend"></label>
+                                <label>费用类型<input type="text" v-model="fsort"></label>
+                                <button @click="handleAdd(8)">提交</button>
+                                <button @click="cancel(8)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords8" placeholder="缴费人"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>缴费人</th>
+                                    <th>缴费时间</th>
+                                    <th>缴费金额</th>
+                                    <th>费用类型</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id8" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id8}}</td>
+                                        <td>{{item.fname}}</td>
+                                        <td>{{item.ftime}}</td>
+                                        <td>{{item.spend}}</td>
+                                        <td>{{item.fsort}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id8,8)'>删除</span>
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id8,8)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[9].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id9" :disabled="flag9"></label>
+                                <label>姓名<input type="text" v-model="aname"></label>
+                                <label>注册时间<input type="text" v-model="atime"></label>
+                                <label>用户类别<input type="text" v-model="asort"></label>
+                                <label>密码<input type="text" v-model="apassword"></label>
+                                <button @click="handleAdd(9)">提交</button>
+                                <button @click="cancel(9)">取消</button>
+                            </div>
+                            <!-- <div><label><input type="text" v-model="keywords9" placeholder="姓名"></label></div> -->
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>姓名</th>
+                                    <th>注册时间</th>
+                                    <th>用户类别</th>
+                                    <th>密码</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id9" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id9}}</td>
+                                        <td>{{item.aname}}</td>
+                                        <td>{{item.atime}}</td>
+                                        <td>{{item.asort}}</td>
+                                        <td>{{item.apassword}}</td>
+                                        <td> 
+                                            <!-- <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id9,9)'>删除</span> -->
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id9,9)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="wo" style="display: none;height: 100%;">
+        <div class="d-flex bg-light h-100">
+            <div class="bg-dark text-white" style="min-width: 160px;">
+                <h4 class="px-2 font-weight-bolder">物业管理系统</h4>
+                <div class="h-100" id="bar" style="overflow-y: auto;">
+                <nav class="navbar p-0 navbar-light bg-dark flex-column pb-5">
+                    <button class="bg-dark border-0 w-100 text-left">
+                        <a class="nav-link text-white font-weight-bold" style="font-size: 20px;" @click="tab(none)">首页</a>
+                    </button>
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#call"
+                            data-toggle="collapse">公告查看</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="call">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#" @click="tab(1)">公告列表</a></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#comp"
+                            data-toggle="collapse">投诉管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="comp">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(4)">投诉列表</a></button>
+                            </li>
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(5)">留言</a></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#service"
+                            data-toggle="collapse">维修管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="service">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(7)">维修列表</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#cost"
+                            data-toggle="collapse">费用管理</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="cost">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(8)">缴费记录</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left" style="height: 48px;">
+                        <a href="#" class="nav-link navbar-toggler py-2 px-3 text-white font-weight-bold" data-target="#pwd"
+                            data-toggle="collapse">个人信息</a>
+                    </button>
+                    <div class="collapse navbar-collapse w-100" id="pwd">
+                        <ul class="navbar-nav">
+                            <li class="nav-item text-white">
+                                <button class="bg-dark border-0 w-100 text-left"><a class="nav-link text-white px-3"
+                                        href="#"  @click="tab(10)">个人信息</a></button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="bg-dark border-0 w-100 text-left">
+                        <a class="nav-link text-white font-weight-bold" style="font-size: 20px;" onclick="display()">退出</a>
+                    </button>
+
+                </nav>
+                </div>
+            </div>
+            <div class="flex-grow-1 h-100">
+                <div class="d-flex">
+                    <div class="ml-3 align-self-center">社区物业管理系统</div>
+                    <div class="flex-grow-1 align-self-center text-right">欢迎使用：泰迪</div>
+                </div>
+                <div class="h-100 p-5" id="bar1" style="overflow-y: auto;background-image: url('./image/R-C.gif');">
+                    <template>
+                        <div v-show="key[1].show">
+                            <div><label><input type="text" v-model="keywords1" placeholder="标题"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>公告标题</th>
+                                    <th>发布时间</th>
+                                    <th>公告内容</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id1" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id1}}</td>
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.time}}</td>
+                                        <td>{{item.content}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[4].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id4" :disabled="flag4"></label>
+                                <label>投诉人<input type="text" v-model="cname"></label>
+                                <label>投诉时间<input type="text" v-model="ctime"></label>
+                                <label>投诉原因<input type="text" v-model="reason"></label>
+                                <label>处理状态<input type="text" v-model="now"></label>
+                                <label>处理时间<input type="text" v-model="rtime"></label>
+                                <button @click="handleAdd(4)">提交</button>
+                                <button @click="cancel(4)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords4" placeholder="编号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>投诉人</th>
+                                    <th>投诉时间</th>
+                                    <th>投诉原因</th>
+                                    <th>处理状态</th>
+                                    <th>处理时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id4" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id4}}</td>
+                                        <td>{{item.cname}}</td>
+                                        <td>{{item.ctime}}</td>
+                                        <td>{{item.reason}}</td>
+                                        <td>{{item.now}}</td>
+                                        <td>{{item.rtime}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[7].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id7" :disabled="flag7"></label>
+                                <label>维修人<input type="text" v-model="wname"></label>
+                                <label>维修时间<input type="text" v-model="wtime"></label>
+                                <label>维修原因<input type="text" v-model="wreason"></label>
+                                <label>门牌号<input type="text" v-model="wnum"></label>
+                                <label>处理状态<input type="text" v-model="wnow"></label>
+                                <label>处理时间<input type="text" v-model="wetime"></label>
+                                <button @click="handleAdd(7)">提交</button>
+                                <button @click="cancel(7)">取消</button>
+                            </div>
+                            <div><label><input type="text" v-model="keywords7" placeholder="编号"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>维修人</th>
+                                    <th>维修时间</th>
+                                    <th>维修原因</th>
+                                    <th>门牌号</th>
+                                    <th>处理状态</th>
+                                    <th>处理时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id7" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id7}}</td>
+                                        <td>{{item.wname}}</td>
+                                        <td>{{item.wtime}}</td>
+                                        <td>{{item.wreason}}</td>
+                                        <td>{{item.wnum}}</td>
+                                        <td>{{item.wnow}}</td>
+                                        <td>{{item.wetime}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[8].show">
+                            <div><label><input type="text" v-model="keywords8" placeholder="缴费人"></label></div>
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>缴费人</th>
+                                    <th>缴费时间</th>
+                                    <th>缴费金额</th>
+                                    <th>费用类型</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id8" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id8}}</td>
+                                        <td>{{item.fname}}</td>
+                                        <td>{{item.ftime}}</td>
+                                        <td>{{item.spend}}</td>
+                                        <td>{{item.fsort}}</td>
+                                        <td> 
+                                            <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id8,8)'>缴费</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[10].show">
+                            <div>
+                                <label>编号<input type="text" v-model="id10" :disabled="flag10"></label>
+                                <label>姓名<input type="text" v-model="pname"></label>
+                                <label>注册时间<input type="text" v-model="ptime"></label>
+                                <label>用户类别<input type="text" v-model="psort"></label>
+                                <label>密码<input type="text" v-model="ppassword"></label>
+                                <label>门牌号<input type="text" v-model="pdoor"></label>
+                                <button @click="handleAdd(10)">提交</button>
+                                <button @click="cancel(10)">取消</button>
+                            </div>
+                            <!-- <div><label><input type="text" v-model="keywords9" placeholder="姓名"></label></div> -->
+                            <table class="border border-danger w-100">
+                                <thead>
+                                    <tr>
+                                    <th>编号</th>
+                                    <th>姓名</th>
+                                    <th>注册时间</th>
+                                    <th>用户类别</th>
+                                    <th>密码</th>
+                                    <th>门牌号</th>
+                                    <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr :key="item.id10" v-for="(item,index1) in fillPersons">
+                                        <td>{{item.id10}}</td>
+                                        <td>{{item.pname}}</td>
+                                        <td>{{item.ptime}}</td>
+                                        <td>{{item.psort}}</td>
+                                        <td>{{item.ppassword}}</td>
+                                        <td>{{item.pdoor}}</td>
+                                        <td> 
+                                            <!-- <span class="btn bg-danger" type="button" @click.prevent = 'remove(item.id9,9)'>删除</span> -->
+                                            <span class="btn bg-primary" type="button" @click.prevent = 'toEdit(item.id10,10)'>修改</span> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </template>
+                    <template>
+                        <div v-show="key[5].show" class="h-100">
+                             <!-- 外部容器 -->
+                            <div class="wrapper h-100">
+                                <!-- 内部容器 -->
+                                <div class="inner w-100 mx-auto h-100">
+                                    <div>
+                                        <!-- 输入留言区域 -->
+                                        <textarea name="txt1" class="w-75" id="txts" cols="80" rows="5"></textarea>
+                                        <!-- 统计文本域中的字数 -->
+                                        <p id="texts">已输入字数：
+                                            <span id="text-nows">0</span>/100
+                                        </p>
+                                        <!-- 提交留言按钮 -->
+                                        <input type="button" id="btns" value="提交留言"> 
+                                    </div>
+                                    <div class="h-50 overflow-hidden">
+                                    <p>留言列表</p>
+                                    <!-- 呈现留言区域 -->
+                                    <ul id="tets" class="w-75 h-100 pb-5 overflow-auto">
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function display(){
+            var index = document.getElementById('index');
+            var first = document.getElementById("first");
+            var wo = document.getElementById("wo");
+            wo.style.display = 'none'
+            first.style.display = 'none'
+            index.style.display = 'block'
+        }
+        function login(){
+        var tab1 = document.getElementById("login")
+        var tab2 = document.getElementById("sign")
+        var btn1 = document.getElementById("btn1")
+        var btn2 = document.getElementById("btn2")
+        btn1.style.borderBottom = "3px solid #FFA00A"
+        btn2.style.borderBottom = "none" 
+        tab1.style.display = 'block'
+        tab2.style.display = 'none' 
+    }
+        function sign(){
+            var tab1 = document.getElementById("login")
+            var tab2 = document.getElementById("sign")
+            var btn1 = document.getElementById("btn1")
+            var btn2 = document.getElementById("btn2")
+            var indexall = document.getElementById("indexall");
+            indexall.style.height = "650px"
+            btn1.style.borderBottom = "none"
+            btn2.style.borderBottom = "3px solid #FFA00A"
+            tab1.style.display = 'none'
+            tab2.style.display = 'block' 
+        }
+        function skip() {
+            var user = document.getElementById("user");
+            var admin = document.getElementById("admin");
+            var index = document.getElementById('index');
+            var first = document.getElementById("first");
+            var wo = document.getElementById("wo");
+            if(user.checked == true) {
+                wo.style.display = 'block'
+                index.style.display = 'none'
+            }
+            if(admin.checked==true){
+                first.style.display = 'block'
+                index.style.display = 'none'
+            }
+            
+        }
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                key:[
+                {user:[
+                {"name":"泰迪","tele":"18020187137","sex":"男","door":"1-4-102","id":1},
+                {"name":"李四","tele":"1802018","sex":"男","door":"1-4-101","id":2},
+                {"name":"李四","tele":"1802018","sex":"男","door":"1-4-101","id":3},
+                {"name":"李四","tele":"1802018","sex":"男","door":"1-4-101","id":4},
+                {"name":"李四","tele":"1802018","sex":"男","door":"1-4-101","id":5},
+                {"name":"王五","tele":"180201877","sex":"男","door":"1-4-103","id":6}
+                ],show:false},
+                {TZ:[
+                    {"id1":1,"title":"停水通知","time":"2022-02-04 16:20","content":"关于停水通知"},
+                    {"id1":2,"title":"停电通知","time":"2022-02-04 16:20","content":"关于停电通知"}
+                ],show:false},
+                {build:[
+                    {"id2":1,'bName':"1号楼"},
+                    {"id2":2,'bName':"2号楼"}
+                ],show:false},
+                {home:[
+                    {"id3":1,'door':"1-1-101",'bName':'1号楼','price':116.0,'size':'三室一厅','area':1500,'into':'已入住','host':'李四'},
+                    {"id3":2,'door':"1-1-102",'bName':'1号楼','price':116.0,'size':'三室一厅','area':1500,'into':'未入住','host':''}
+                ],show:false},
+                {comp:[
+                    {'id4':1,'cname':'李艾','ctime':'2022-0131 20:40','reason':'施工很吵','now':'已处理','rtime':'2022-01-31 21:17'},
+                    {'id4':2,'cname':'李华','ctime':'2022-0131 20:41','reason':'施工很吵','now':'未处理','rtime':'2022-01-31 21:18'}
+                ],show:false},
+                {show:false},
+                {car:[
+                    {'id6':'1-1-1001','position':'1号楼','yprice':'2800','isNull':'空余','stime':'','etime':'','carHost':''},
+                    {'id6':'2-2-1001','position':'2号楼','yprice':'2800','isNull':'空余','stime':'','etime':'','carHost':''}
+                ],show:false},
+                {service:[
+                    {'id7':'20220204831588','wname':'泰迪','wtime':'2022-01-31 21:17','wreason':'楼房漏水','wnum':'1-4-102','wnow':'待处理','wetime':'2022-02-01 21:17'},
+                    {'id7':'20220204831556','wname':'李四','wtime':'2022-01-31 21:18','wreason':'楼房漏水','wnum':'1-4-103','wnow':'待处理','wetime':'2022-02-01 20:17'}
+                ],show:false},
+                {cost:[
+                    {'id8':'1','fname':'泰迪','ftime':'2022-01-31 21:17','spend':'500','fsort':'水电费'},
+                    {'id8':'2','fname':'泰迪','ftime':'2022-01-31 21:18','spend':'200','fsort':'物业费'}
+                ],show:false},
+                {admin:[
+                    {'id9':'2013130','aname':'泰迪','atime':'2022-01-31','asort':'管理员','apassword':'123456'},
+                ],show:false},
+                {person:[
+                    {'id10':'2013136','pname':'泰迪','ptime':'2022-01-31','psort':'户主','ppassword':'123456','pdoor':'1-1-102'},
+                ],show:false}
+                ],
+                keywords:'',
+                keywords1:'',
+                keywords2:'',
+                keywords3:'',
+                keywords4:'',
+                keywords6:'',
+                keywords7:'',
+                keywords8:'',
+                keywords9:'',
+                keywords10:'',
+                fname:'',
+                ftime:'',
+                spend:'',
+                fsort:'',
+                name:'',
+                tele:'',
+                sex:'',
+                door:'',
+                id:'',
+                id1:'',
+                id2:'',
+                id3:'',
+                id4:'',
+                id6:'',
+                id7:'',
+                id8:'',
+                id9:'',
+                id10:'',
+                pname:'',
+                ptime:'',
+                psort:'',
+                ppassword:'',
+                pdoor:'',
+                aname:'',
+                atime:'',
+                asort:'',
+                apassword:'',
+                wname:'',
+                wtime:'',
+                wreason:'',
+                wnum:'',
+                wnow:'',
+                wetime:'',
+                position:'',
+                yprice:'',
+                isNull:'',
+                stime:'',
+                etime:'',
+                carHost:'',
+                title:'',
+                now:'',
+                rtime:'',
+                time:'',
+                ctime:'',
+                reason:'',
+                content:'',
+                bName:'',
+                cname:'',
+                price:'',
+                size:'',
+                area:'',
+                into:'',
+                host:'',
+                flag:false,
+                flag1:false,
+                flag2:false,
+                flag3:false,
+                flag4:false,
+                flag6:false,
+                flag7:false,
+                flag8:false,
+                flag9:false,
+                flag10:false
+            },
+            computed:{
+                fillPersons(){
+                    if(this.key[0].show){
+                        const arr = this.key[0].user.filter((item)=>{
+                        return item.name.indexOf(this.keywords) > -1
+                    })
+                        return arr
+                    }else if(this.key[1].show){
+                        const arr = this.key[1].TZ.filter((item)=>{
+                        return item.title.indexOf(this.keywords1) > -1
+                    })
+                        return arr
+                    }else if(this.key[2].show){
+                        const arr = this.key[2].build.filter((item)=>{
+                        return item.bName.indexOf(this.keywords2) > -1
+                    })
+                        return arr
+                    }else if(this.key[3].show){
+                        const arr = this.key[3].home.filter((item)=>{
+                        return item.door.indexOf(this.keywords3) > -1
+                    })
+                        return arr
+                    }else if(this.key[4].show){
+                        const arr = this.key[4].comp.filter((item)=>{
+                        return item.cname.indexOf(this.keywords4) > -1
+                    })
+                        return arr
+                    }else if(this.key[6].show){
+                        const arr = this.key[6].car.filter((item)=>{
+                        return item.id6.indexOf(this.keywords6) > -1
+                    })
+                        return arr
+                    }else if(this.key[7].show){
+                        const arr = this.key[7].service.filter((item)=>{
+                        return item.id7.indexOf(this.keywords7) > -1
+                    })
+                        return arr
+                    }else if(this.key[8].show){
+                        const arr = this.key[8].cost.filter((item)=>{
+                        return item.fname.indexOf(this.keywords8) > -1
+                    })
+                        return arr
+                    }else if(this.key[9].show){
+                        const arr = this.key[9].admin.filter((item)=>{
+                        return item.aname.indexOf(this.keywords9) > -1
+                    })
+                        return arr
+                    }else if(this.key[10].show){
+                        const arr = this.key[10].person.filter((item)=>{
+                        return item.pname.indexOf(this.keywords10) > -1
+                    })
+                        return arr
+                    }
+                }
+            },
+            methods:{
+                tab:function(index) {
+                    for(var i=0;i<this.key.length;i++) {
+                        this.key[i].show=false;
+                        if(i==index) {
+                            this.key[index].show=true;
+                        }
+                    }
+                },
+                remove(id,index) {
+                    if(index==0){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].user = this.key[index].user.filter((item,index) => item.id != id);
+                        }
+                    }else if(index==1){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].TZ = this.key[index].TZ.filter((item,index) => item.id1 != id);
+                        }
+                    }else if(index==2){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].build = this.key[index].build.filter((item,index) => item.id2 != id);
+                        }
+                    }else if(index==3){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].home = this.key[index].home.filter((item,index) => item.id3 != id);
+                        }
+                    }else if(index==4){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].comp = this.key[index].comp.filter((item,index) =>item.id4 != id );
+                        }
+                    }else if(index==6){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].car = this.key[index].car.filter((item,index) =>item.id6 != id );
+                        }
+                    }else if(index==7){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].service = this.key[index].service.filter((item,index) =>item.id7 != id );
+                        }
+                    }else if(index==8){
+                        if(confirm("确定删除该条信息?"))
+                        {
+                            this.key[index].cost = this.key[index].cost.filter((item,index) =>item.id8 != id );
+                        }
+                    }
+                },
+                handleAdd(index) {
+                    if(index==0){
+                        if(this.flag) {
+                        this.key[index].user.some(item =>{
+                            if(item.id===this.id){
+                                item.name = this.name;
+                                item.sex = this.sex;
+                                item.tele = this.tele;
+                                item.door = this.door;
+                                return true;
+                            }
+                        });
+                        this.flag = false;
+                    }else {
+                        let item = {
+                            id:this.id,
+                            name:this.name,
+                            sex:this.sex,
+                            tele:this.tele,
+                            door:this.door
+                        };
+                        this.key[index].user.push(item);
+                    }
+                    this.name='',
+                    this.tele='',
+                    this.sex='',
+                    this.door='',
+                    this.id=''
+                    }else if(index==1){
+                        if(this.flag1) {
+                        this.key[index].TZ.some(item =>{
+                            if(item.id1===this.id1){
+                                item.title = this.title;
+                                item.time = this.time;
+                                item.content = this.content;
+                                return true;
+                            }
+                        });
+                        this.flag1 = false;
+                    }else {
+                        let item = {
+                            id1:this.id1,
+                            title:this.title,
+                            time:this.time,
+                            content:this.content,
+                        };
+                        this.key[index].TZ.push(item);
+                    }
+                    this.title='',
+                    this.time='',
+                    this.content='',
+                    this.id1=''
+                    }else if(index==2){
+                        if(this.flag2) {
+                        this.key[index].build.some(item =>{
+                            if(item.id2===this.id2){
+                                item.bName = this.bName;
+                                return true;
+                            }
+                        });
+                        this.flag2 = false;
+                    }else {
+                        let item = {
+                            id2:this.id2,
+                            bName:this.bName
+                        };
+                        this.key[index].build.push(item);
+                    }
+                    this.bName='',
+                    this.id2=''
+                    }else if(index==3){
+                        if(this.flag3) {
+                        this.key[index].home.some(item =>{
+                            if(item.id3===this.id3){
+                                item.door = this.door;
+                                item.bName = this.bName;
+                                item.price = this.price;
+                                item.size = this.size;
+                                item.area = this.area;
+                                item.into = this.into;
+                                item.host = this.host;
+                                return true;
+                            }
+                        });
+                        this.flag3 = false;
+                    }else {
+                        let item = {
+                            id3:this.id3,
+                            door :this.door,
+                            bName: this.bName,
+                            price: this.price,
+                            size :this.size,
+                            area :this.area,
+                            into :this.into,
+                            host :this.host
+                    };
+                        this.key[index].home.push(item);
+                    }
+                    this.id3='',
+                    this.door='',
+                    this.bName='',
+                    this.price='',
+                    this.size='',
+                    this.area='',
+                    this.into='',
+                    this.host=''
+                    }else if(index==4){
+                        if(this.flag4) {
+                        this.key[index].comp.some(item =>{
+                            if(item.id4===this.id4){
+                                item.cname = this.cname;
+                                item.ctime = this.ctime;
+                                item.reason = this.reason;
+                                item.now = this.now;
+                                item.rtime = this.rtime;
+                                return true;
+                            }
+                        });
+                        this.flag4 = false;
+                    }else {
+                        let item = {
+                            id4:this.id4,
+                            cname :this.cname,
+                            ctime: this.ctime,
+                            reason: this.reason,
+                            now :this.now,
+                            rtime :this.rtime
+                    };
+                        this.key[index].comp.push(item);
+                    }
+                    this.id4='',
+                    this.cname='',
+                    this.ctime='',
+                    this.reason='',
+                    this.now='',
+                    this.rtime=''
+                    }else if(index==6){
+                        if(this.flag6) {
+                        this.key[index].car.some(item =>{
+                            if(item.id6===this.id6){
+                                item.position = this.position;
+                                item.yprice = this.yprice;
+                                item.isNull = this.isNull;
+                                item.stime = this.stime;
+                                item.etime = this.etime;
+                                item.carHost = this.carHost;
+                                return true;
+                            }
+                        });
+                        this.flag6 = false;
+                    }else {
+                        let item = {
+                            id6:this.id6,
+                            position: this.position,
+                            yprice: this.yprice,
+                            isNull: this.isNull,
+                            stime: this.stime,
+                            etime: this.etime,
+                            carHost: this.carHost
+                    };
+                        this.key[index].car.push(item);
+                    }
+                    this.id6='',
+                    this.position='',
+                    this.yprice='',
+                    this.isNull='',
+                    this.stime='',
+                    this.etime='',
+                    this.carHost=''
+                    }else if(index==7){
+                        if(this.flag7) {
+                        this.key[index].service.some(item =>{
+                            if(item.id7===this.id7){
+                                item.wname = this.wname;
+                                item.wtime = this.wtime;
+                                item.wreason = this.wreason;
+                                item.wnum = this.wnum;
+                                item.wnow = this.wnow;
+                                item.wetime = this.wetime;
+                                return true;
+                            }
+                        });
+                        this.flag7 = false;
+                    }else {
+                        let item = {
+                            id7:this.id7,
+                            wname: this.wname,
+                            wtime: this.wtime,
+                            wreason: this.wreason,
+                            wnum: this.wnum,
+                            wnow: this.wnow,
+                            wetime: this.wetime
+                    };
+                        this.key[index].service.push(item);
+                    }
+                    this.id7='',
+                    this.wname='',
+                    this.wtime='',
+                    this.wreason='',
+                    this.wnum='',
+                    this.wnow='',
+                    this.wetime=''
+                    }else if(index==8){
+                        if(this.flag8) {
+                        this.key[index].cost.some(item =>{
+                            if(item.id8===this.id8){
+                                item.fname = this.fname;
+                                item.ftime = this.ftime;
+                                item.spend = this.spend;
+                                item.fsort = this.fsort;
+                                return true;
+                            }
+                        });
+                        this.flag8 = false;
+                    }else {
+                        let item = {
+                            id8:this.id8,
+                            fname: this.fname,
+                            ftime: this.ftime,
+                            spend: this.spend,
+                            fsort: this.fsort
+                    };
+                        this.key[index].cost.push(item);
+                    }
+                    this.id8='',
+                    this.fname='',
+                    this.ftime='',
+                    this.spend='',
+                    this.fsort=''
+                    }else if(index==9){
+                        if(this.flag9) {
+                        this.key[index].admin.some(item =>{
+                            if(item.id9===this.id9){
+                                item.aname = this.aname;
+                                item.atime = this.atime;
+                                item.apassword = this.apassword;
+                                item.asort = this.asort;
+                                return true;
+                            }
+                        });
+                        this.flag9 = false;
+                    }else {
+                        let item = {
+                            id9:this.id9,
+                            aname: this.aname,
+                            atime: this.atime,
+                            apassword: this.apassword,
+                            asort: this.asort
+                    };
+                        this.key[index].admin.push(item);
+                    }
+                    this.id9='',
+                    this.aname='',
+                    this.atime='',
+                    this.apassword='',
+                    this.asort=''
+                    }else if(index==10){
+                        if(this.flag10) {
+                        this.key[index].person.some(item =>{
+                            if(item.id10===this.id10){
+                                item.pname = this.pname;
+                                item.ptime = this.ptime;
+                                item.ppassword = this.ppassword;
+                                item.psort = this.psort;
+                                item.pdoor = this.pdoor;
+                                return true;
+                            }
+                        });
+                        this.flag10 = false;
+                    }else {
+                        let item = {
+                            id10:this.id10,
+                            pname: this.pname,
+                            ptime: this.ptime,
+                            ppassword: this.ppassword,
+                            psort: this.psort,
+                            pdoor:this.pdoor
+                    };
+                        this.key[index].person.push(item);
+                    }
+                    this.id10='',
+                    this.pname='',
+                    this.ptime='',
+                    this.ppassword='',
+                    this.psort='',
+                    this.pdoor=''
+                    }
+                },
+                toEdit(id,index) {
+                    if(index==0){
+                        this.flag =true;
+                        let item = this.key[index].user.filter((item1,index) => {
+                            return item1.id == id;
+                        });
+                        this.id = item[0].id;
+                        this.name =item[0].name;
+                        this.sex = item[0].sex;
+                        this.tele = item[0].tele;
+                        this.door = item[0].door;
+                    }else if(index==1){
+                        this.flag1 =true;
+                        let item = this.key[index].TZ.filter((item1,index) => {
+                            return item1.id1 == id;
+                        });
+                        this.id1 = item[0].id1;
+                        this.title =item[0].title;
+                        this.time = item[0].time;
+                        this.content = item[0].content;
+                    }else if(index==2){
+                        this.flag2 =true;
+                        let item = this.key[index].build.filter((item1,index) => {
+                            return item1.id2 == id;
+                        });
+                        this.id2 = item[0].id2;
+                        this.bName = item[0].bName;
+                    }else if(index==3){
+                        this.flag3 =true;
+                        let item = this.key[index].home.filter((item1,index) => {
+                            return item1.id3 == id;
+                        });
+                        this.id3 = item[0].id3;
+                        this.door =item[0].door;
+                        this.bName = item[0].bName;
+                        this.price = item[0].price;
+                        this.size = item[0].size;
+                        this.area = item[0].area;
+                        this.into = item[0].into;
+                        this.host = item[0].host;
+                    }else if(index==4){
+                        this.flag4 =true;
+                        let item = this.key[index].comp.filter((item1,index) => {
+                            return item1.id4 == id;
+                        });
+                        this.id4 = item[0].id4;
+                        this.cname =item[0].cname;
+                        this.ctime = item[0].ctime;
+                        this.reason = item[0].reason;
+                        this.now = item[0].now;
+                        this.rtime = item[0].rtime;
+                    }else if(index==6){
+                        this.flag6 =true;
+                        let item = this.key[index].car.filter((item1,index) => {
+                            return item1.id6 == id;
+                        });
+                        this.id6 = item[0].id6;
+                        this.position =item[0].position;
+                        this.yprice = item[0].yprice;
+                        this.isNull = item[0].isNull;
+                        this.stime = item[0].stime;
+                        this.etime = item[0].etime;
+                        this.carHost = item[0].carHost
+                    }else if(index==7){
+                        this.flag7 =true;
+                        let item = this.key[index].service.filter((item1,index) => {
+                            return item1.id7 == id;
+                        });
+                        this.id7 = item[0].id7;
+                        this.wname =item[0].wname;
+                        this.wtime = item[0].wtime;
+                        this.wreason = item[0].wreason;
+                        this.wnum = item[0].wnum;
+                        this.wnow = item[0].wnow;
+                        this.wetime = item[0].wetime
+                    }else if(index==8){
+                        this.flag8 =true;
+                        let item = this.key[index].cost.filter((item1,index) => {
+                            return item1.id8 == id;
+                        });
+                        this.id8 = item[0].id8;
+                        this.fname =item[0].fname;
+                        this.ftime = item[0].ftime;
+                        this.spend = item[0].spend;
+                        this.fsort = item[0].fsort;
+                    }else if(index==9){
+                        this.flag9 =true;
+                        let item = this.key[index].admin.filter((item1,index) => {
+                            return item1.id9 == id;
+                        });
+                        this.id9 = item[0].id9;
+                        this.aname =item[0].aname;
+                        this.atime = item[0].atime;
+                        this.apassword = item[0].apassword
+                        this.asort = item[0].asort;
+                    }else if(index==10){
+                        this.flag10 =true;
+                        let item = this.key[index].person.filter((item1,index) => {
+                            return item1.id10 == id;
+                        });
+                        this.id10 = item[0].id10;
+                        this.pname =item[0].pname;
+                        this.ptime = item[0].ptime;
+                        this.ppassword = item[0].ppassword
+                        this.psort = item[0].psort;
+                        this.pdoor = item[0].pdoor
+                    }      
+                },
+                cancel(index) {
+                    if(index==0){
+                        this.id = '';
+                        this.name ='';
+                        this.sex = '';
+                        this.tele = '';
+                        this.door = '';
+                        this.flag = false
+                    }else if(index==1){
+                        this.id1 = '';
+                        this.title ='';
+                        this.time = '';
+                        this.content = '';
+                        this.flag1 = false
+                    }else if(index==2){
+                        this.id2 = '';
+                        this.bName = '';
+                        this.flag2 = false
+                    }else if(index==3){
+                        this.id3='',
+                        this.door='',
+                        this.bName='',
+                        this.price='',
+                        this.size='',
+                        this.area='',
+                        this.into='',
+                        this.host=''
+                        this.flag3 = false
+                    }else if(index==4){
+                        this.id4='',
+                        this.cname='',
+                        this.ctime='',
+                        this.reason='',
+                        this.now='',
+                        this.rtime='',
+                        this.flag4 = false
+                    }else if(index==6){
+                        this.id6='',
+                        this.position='',
+                        this.yprice='',
+                        this.isNull='',
+                        this.stime='',
+                        this.etime='',
+                        this.carHost='',
+                        this.flag6 = false
+                    }else if(index==7){
+                        this.id7='',
+                        this.wname='',
+                        this.wtime='',
+                        this.wreason='',
+                        this.wnum='',
+                        this.wnow='',
+                        this.wetime='',
+                        this.flag7 = false
+                    }else if(index==8){
+                        this.id8='',
+                        this.fname='',
+                        this.ftime='',
+                        this.spend='',
+                        this.fsort='',
+                        this.flag8 = false
+                    }else if(index==9){
+                        this.id9='',
+                        this.aname='',
+                        this.atime='',
+                        this.apassword='',
+                        this.asort='',
+                        this.flag9 = false
+                    }else if(index==10){
+                        this.id10='',
+                        this.pname='',
+                        this.ptime='',
+                        this.ppassword='',
+                        this.psort='',
+                        this.pdoor='',
+                        this.flag10 = false
+                    }
+                }
+            }
+        })
+
+
+
+        // 获取提交留言按钮
+        var btn = document.getElementById('btn');
+        var btns = document.getElementById('btns');
+        // 获取留言板
+        var msg = document.getElementById('txt');
+        var msgs = document.getElementById('txts');
+        // 获取呈现留言区域
+        var ul = document.getElementById('tet');
+        var uls = document.getElementById('tets');
+        // 获取统计文本域中文字的元素
+        var text = document.getElementById('text-now');
+        var texts = document.getElementById('text-nows');
+ 
+        // 为提交留言按钮添加单击事件
+        btn.onclick = function () {
+            if (msg.value == '') {
+                alert('留言不可为空哦！');
+            } else {
+                var li1 = document.createElement('li');
+                var date = new Date();
+                var time = date.toLocaleDateString();
+                li1.innerHTML = msg.value + '<div>' + '<span>' + time + '</span>' + '<button>' + '删除' + '</button>' + '</div>';
+                var length = (msg.value).length;
+                if (length > 100) {
+                    alert('当前输入字符长度不可超过100！');
+                    msg.value = '';
+                } else {
+                    text.innerText = length;
+                    ul.insertBefore(li1, ul.children[0]);
+                    msg.value = '';
+                }
+                //   通过事件的委派实现删除功能，事件的委派也是利用到了事件的冒泡，通过给父元素绑定事件解决问题
+                ul.addEventListener('click', function (event) {
+                    if (event.target.nodeName == 'BUTTON') {
+                        ul.removeChild(event.target.parentNode.parentNode);
+                    }
+                }, false);
+            }
+        }
+        btns.onclick = function () {
+            if (msgs.value == '') {
+                alert('留言不可为空哦！');
+            } else {
+                var li = document.createElement('li');
+                var date = new Date();
+                var time = date.toLocaleDateString();
+                li.innerHTML = msgs.value + '<div>' + '<span>' + time + '</span>' + '<button>' + '删除' + '</button>' + '</div>';
+                var length = (msgs.value).length;
+                if (length > 100) {
+                    alert('当前输入字符长度不可超过100！');
+                    msgs.value = '';
+                } else {
+                    texts.innerText = length;
+                    uls.insertBefore(li, uls.children[0]);
+                    msgs.value = '';
+                }
+                //   通过事件的委派实现删除功能，事件的委派也是利用到了事件的冒泡，通过给父元素绑定事件解决问题
+                uls.addEventListener('click', function (event) {
+                    if (event.target.nodeName == 'BUTTON') {
+                        uls.removeChild(event.target.parentNode.parentNode);
+                    }
+                }, false);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
