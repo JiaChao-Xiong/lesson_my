@@ -1,5 +1,5 @@
-// 配置文件
-// 配置项之 所有请求的公共url export 向外暴露
-export const baseURL = 'http://123.207.32.32:8000'
-// 超时
+// 请求全局配置
+// 所有请求的前缀
+// 模块化的输出
+export const baseURL = "http://152.136.185.210:7878/api/hy66"
 export const timeout = 5000

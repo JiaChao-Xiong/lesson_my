@@ -1,8 +1,20 @@
-// 基于 network request 方法
 import request from './network.js'
-// getMultiData 向外暴露
-export function getMultiData() {
-    return request({
-      url: '/home/multidata'
-    })
-  } 
+
+export const getMultiData = () => {
+  // 返回一个什么东西， 上面有then 方法
+  // 解决js 异步的良药
+  return request({
+    url: '/home/multidata',
+  })
+}
+
+export const getProducts = (type, page) => {
+  console.log(getProducts)
+  return request({
+    url: '/home/data',
+    data: {
+      type,
+      page
+    }
+  })
+}
