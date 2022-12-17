@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- js Number   64位    52位存放数据的二进制
+    表达的最大值    
+-->
+<script>
+// 计算错误
+// 大数相加
+let a = '1234567898765432100000012345678901'; // 64 位 2^52-1l 溢出
+let b = '9876543210123456789000000000123';
+function add(str1, str2) {
+    let maxLength = Math.max(str1.length, str2.length);
+    // console.log(maxLength,str2.length);
+    str1 = str1.padStart(maxLength, 0); 
+    str2 = str2.padStart(maxLength, 0); // 长度小于maxLength前面补0
+    console.log(str1, str2);
+    let temp = 0; // 相加之和 %10
+    let flag = 0; // 进位
+    let result = '';
+    // 低位到高为位
+    for(let i = maxLength - 1; i >= 0; i--){
+        // 位数一样 j
+        temp = parseInt(str1[i]) + parseInt(str2[i]) + flag;
+        flag = Math.floor(temp/10);
+        result = temp % 10 + result;
+    }
+    // 当最高位
+    if (flag === 1) {
+        result = '1' + result;
+    }
+    return result;
+}
+const result = add(a, b);
+console.log(result);
+// console.log(a + b);
+</script>
+</body>
+</html>
