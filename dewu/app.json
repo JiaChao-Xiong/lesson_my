@@ -1,0 +1,25 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "usingComponents": {
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-image": "/miniprogram_npm/@vant/weapp/image/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-col": "/miniprogram_npm/@vant/weapp/col/index",
+    "van-row": "/miniprogram_npm/@vant/weapp/row/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-goods-action": "/miniprogram_npm/@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "/miniprogram_npm/@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "/miniprogram_npm/@vant/weapp/goods-action-button/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

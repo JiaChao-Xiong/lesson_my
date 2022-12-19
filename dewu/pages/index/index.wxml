@@ -1,0 +1,67 @@
+<view class="page detail">
+  <view>
+    <van-image src="{{goods.thumb}}"
+      height="414"
+      width="100%"
+    />
+  </view>
+  <van-cell-group border="{{false}}">
+    <van-cell
+    custom-class="goods-message"
+      title="{{goods.title}}"
+      label="{{goods.formatPrice}}"
+    >
+    </van-cell>
+    <van-cell
+      custom-class="goods-express"
+      border="{{false}}"
+    >
+      <van-col span="10">运费：{{goods.express}}</van-col>
+      <van-col span="14">剩余：{{goods.remain}}</van-col>
+    </van-cell>
+  </van-cell-group>
+  <!-- 商家信息 -->
+  <vant-cell-group custom-class="goods-cell-group">
+    <van-cell value="进入店铺" icon="shop-o" is-link
+      bind:click="gotoShop"
+    >
+    <!-- 复杂 slot 插槽-->
+    <view slot="title">
+      <text class="van-cell-text">有赞的店</text>
+      <van-tag class="goods-tag" type="danger">官方</van-tag>
+    </view>
+    </van-cell>
+    <van-cell title="线下门店" icon="location-o"
+      is-link
+      bind:click="gotoNearby"
+    >
+    </van-cell>
+  </vant-cell-group>
+  
+  <van-goods-action>
+  <van-goods-action-icon
+    icon="chat-o"
+    text="我的"
+    bind:click="onClickUser"
+  >
+  </van-goods-action-icon>
+  <van-goods-action-icon
+    icon="cart-o"
+    text="购物车"
+    bind:click="onClickUser"
+  >
+  </van-goods-action-icon>
+  <van-goods-action-button
+      text="加入购物车"
+      type="warning"
+      bind:click="onClickButton"
+    >
+    </van-goods-action-button>
+    <van-goods-action-button
+      text="加入购物车"
+      bind:click="onClickButton"
+    >
+    </van-goods-action-button>
+  </van-goods-action>
+
+</view>
