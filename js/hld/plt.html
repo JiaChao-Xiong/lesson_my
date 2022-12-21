@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爬楼梯</title>
+</head>
+<body>
+    <script>
+        // 递归相应的处理方案
+        // 程序技术方案 函数 直接或间接的调用自己
+        // 函数 执行 ？细节
+        // 1. js 使用了 stack 数据结构来维护 程序运行
+        // 2. 函数名 函数体
+        // 函数名(); -> 入栈
+        // 函数反复入栈
+        // 栈内存 简单数据类型 存的是值 | 函数运行 "执行"栈 函数入栈的形式 代码的执行顺序, 堆内存 复杂数据类型 函数的代码
+        // 缺点是 内存空间消耗大
+        const obj = {}; // Map 复用一下
+        const climbStairs = function(n) {
+            // 递归深度 自顶向下
+            // 函数入栈，递归 优化?    自底向上，dp
+            // 缓存计算结果 用空间换时间
+            if (obj[n]) {
+                return obj[n];
+            }
+
+            if (n == 1 || n == 2) { // 退出条件
+                return n;
+            } 
+
+            obj[n] = climbStairs(n - 1) + climbStairs(n - 2);
+            return obj[n];
+        }
+        // 内存溢出
+       console.log(climbStairs(999)); 
+    </script>
+</body>
+</html>

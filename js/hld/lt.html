@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 递归 自顶向下 stack
+        // 自下向上 
+        const climbStairs = (n) => {
+            if (n == 1 || n == 2) {
+                return n;
+            }
+            // 计算公式 f(n) = f(n-1) + fn(n-2) 迭代
+            let ret = 0,
+            pre = 2,
+            prepre = 1;
+            for (let i = 3; i <= n; i++) {
+                ret = pre + prepre;
+                prepre = pre;
+                pre = ret;
+            } 
+            return ret;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function red() {
+            console.log('red');
+        }
+        function green() {
+            console.log('green');
+        }
+        function yellow() {
+            console.log('yellow');
+        }
+        // callback
+        // 抽象
+        var light = function(timer, cb) {
+            // 顺序？
+            return new Promise((resolve, reject) => {
+                // console.log('立即执行'); // constructor
+                setTimeout(() => {
+                    cb();
+                    resolve();
+                }, timer);
+            })
+        }
+        
+        
+        // 不停去做，在吗办？
+        // while,setInterval,递归 函数在内部调用自己
+        var step = function() {
+            // then 的链式调用
+            light(5000, red)
+            .then(() => light(2000, green))
+            .then(() => light(1000, yellow))
+            .then(() => step())
+        }
+        step();
+    </script>
+</body>
+</html>
