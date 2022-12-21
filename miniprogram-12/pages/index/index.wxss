@@ -1,0 +1,18 @@
+.dewu-hd{
+  display: flex;
+}
+.dewu-hd__search{
+  flex: 1;
+}
+.dewu-kind{
+  width: 100rpx;
+  height: 108rpx;
+  background-color: #fff;
+}
+.dewu-kind image{
+  width: 52rpx;
+  height: 68rpx;
+  /* position: relative;
+  top: 30rpx; */
+  padding: 20rpx 24rpx;
+}
