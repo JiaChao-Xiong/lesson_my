@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: green;
+        height: 500px;
+    }
+    .item {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: yellow;
+    }
+    </style>
+</head>
+<body>
+    <!-- Block Format Context -->
+    <!-- body是最大的BFC元素 -->
+    <!-- 为什么div块级 占一行，把兄弟元素挤下去 -->
+    <DIV>
+        1454774
+    </DIV>
+    <div class="box">
+        <!-- 不是新的BFC -->
+        <div class="item">1</div>
+        <div class="item">
+            2
+            <br>
+            2.2
+        </div>
+        <div class="item">3</div>
+    </div>
+</body>
+</html>
