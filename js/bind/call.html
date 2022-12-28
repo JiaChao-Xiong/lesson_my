@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.my_call = function(context) {
+            // 如何实现绑定新的this
+            context.fn = this //context['fn']=this
+            // 如何在调用call时把调用call的函数也执行
+            context.fn()
+        }
+
+        var name = 'cat'
+        var obj = {
+            name: 'dog'
+        }
+        function getName() {
+            console.log(this.name);
+        }
+        getName() //cat
+        getName.my_call(obj) //dog
+        console.log(obj)//{ name: 'dog', fn: [Function: getName] }
+    </script>
+</body>
+</html>

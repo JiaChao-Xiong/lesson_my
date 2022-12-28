@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.my_bind = function(context, ...args1) {
+            // this? foo
+            const that = this;  // 保存了未来要执行的函数
+            return function (...args2) {
+                return that.call(context, ...args1, ...args2)
+            }
+        }
+        let name = 'windowName';
+        let bar = {
+            name: 'barName'
+        }
+        function foo (a, b, c) {
+            console.log(this.name, a + b + c);
+            return a + b + c;
+        }
+        let afterBindFoo = foo.my_bind(bar, 3, 4)
+        afterBindFoo(5);
+    </script>
+</body>
+</html>
