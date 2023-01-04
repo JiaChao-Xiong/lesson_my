@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式</title>
+</head>
+<body>
+  <script>
+    // 1. vue 数据格式是对象，key value 来组织 keys
+    // 2. 每个key 值 template 占位，数据驱动
+    // 3. 当数据发生改变后，template 会响应，自动更新
+    // 数据格式
+    const obj = {
+        a: 1
+    }  // 数据可以被监听   API 
+    // es5  api
+    // 定义一个属性 vue2.0 react 早期版本 源码 实现响应式的api
+    // DOM 编程杜绝
+    // 静态属性
+    // defineProperty 定义对象上的一个属性
+    // value
+    // 可写 writable
+    // enumerable 是否可枚举
+    Object.defineProperty(obj,'counter',{
+        value: 42,
+        enumerable: true,
+        writable: false // 只读
+    })
+    Object.defineProperty(obj,'msg',{
+        value: '世龙js大佬',
+        enumerable: false,
+        writable: false // 只读
+    })
+
+    // writable  api 防止对象被修改?
+    // Object.freeze(obj);
+    // obj.a = 2;
+    // console.log(obj.a);
+    // key symbol  绝对不会被覆盖
+    obj[Symbol()] = '123'
+
+    for(let key in obj) {
+        console.log(key, obj[key]);
+    }
+  </script>  
+</body>
+</html>

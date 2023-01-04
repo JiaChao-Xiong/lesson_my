@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let o = {};
+        let bValue = 39;
+        Object.defineProperty(o,'b',{
+            get() {
+                console.log('你读取了b属性');  // 当你读取了某个属性后，我可以做些其它的事情
+                return bValue;  // 本职工作
+            },
+            set(newValue) {
+                console.log('修改了b的值');
+                bValue = newValue
+            }
+        })
+        console.log(o.b);
+        o.b = 40;
+        console.log(o.b);
+    </script>
+</body>
+</html>
