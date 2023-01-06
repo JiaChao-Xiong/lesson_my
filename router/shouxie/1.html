@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function request(num) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(num*2)
+        }, 1000)
+    })
+}
+// 回调嵌套 回调地狱
+// request(1)
+//     .then((res) => {
+//         console.log(res);
+//         request(res)
+//             .then(res2 => {
+//                 console.log(res2);
+//                 request(res2)
+//                     .then(res3 => {
+//                         console.log(res3)
+//                     })
+//             })
+//     })
+// 链式调用
+// request(1)
+//     .then(res => { 
+//         console.log(res);
+//         return request(res)
+//     })
+//     .then(res2 => { 
+//         console.log(res2)
+//         return request(res2) 
+//     })
+//     .then(res3 => { 
+//         console.log(res3)
+//         return request(res3) 
+//     })
+//     .then(res4 => {
+//         console.log(res4)
+//     })
+// async 修饰符 异步 终极方案
+async function fn() {
+    // 异步变同步
+    const res1 = await request(5);
+    const res2 = await request(res1);
+    const res3 = await request(res2);
+    console.log(res1,res2,res3);
+}
+fn();
+
+</script>
+</body>
+</html>
