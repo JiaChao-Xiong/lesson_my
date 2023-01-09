@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <!-- 根节点， 挂载点 -->
+    <div id="app"></div>
+    <script>
+        const Website = {
+        template: '<h2>JSPan.com</h2>'
+        }
+        const Describ = {
+            template: '<div>技术胖的博客</div>'
+        }
+        const Counter = {
+            data() {
+                return {
+                    newCounter: this.count
+                }
+            },
+            props: { 
+                count: {
+                    type: Number,
+                    default: 1
+                }
+            },
+            // 单项数据绑定
+            template:`
+                <div>{{newCounter}}<button @click="newCounter++">增加1</button></div>
+            `
+        }
+     const app = Vue.createApp({
+        data() {
+            return {
+                count: 1
+            }
+        },
+        components: {
+            'website': Website, 
+            'describ': Describ,
+            'counter': Counter
+        },
+        
+        template:
+         ` 
+         <counter :count="count"/>
+         <website/>
+         <describ/>
+        `
+    });
+    // 全局组件
+    // 复用 封装
+    // app.component('website', {
+    //     template: '<h2>JSPan.com</h2>'
+    // })
+    // app.component('describ', {
+    //     template: '<div>技术胖的博客</div>'
+    // })
+    // 局部组件
+    
+    app.mount('#app')
+    </script>
+</body>
+</html>
