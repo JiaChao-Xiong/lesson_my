@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扁平化</title>
+</head>
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script>
+    // lodash  vue js 框架
+    // vue  mvvm 开发框架 做房子的图纸
+    // lodash  工具库  常用的函数根据
+    // 开发时min 压缩过后哦的，体积更小
+    // lodash.js  学习，看源码
+    let arr = [1, [2, 3], 4];
+    console.log(_.flatten(arr)); // for of + array.isArray  性能好
+    let arr2 = [1, [2, [3, 5]], 4]; // 深度 depth
+    console.log(_.flattenDeep(arr2)); // 递归 开销大
+    </script>
+</body>
+</html>
