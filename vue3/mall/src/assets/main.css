@@ -1,0 +1,6 @@
+/* css @import 引入  css模块化 */
+@import "./base.css";
+
+#app {
+    font-weight: normal;
+}

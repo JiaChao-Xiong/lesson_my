@@ -1,0 +1,22 @@
+{
+  "name": "mall",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lib-flexible": "^0.3.2",
+    "stylus": "^0.59.0",
+    "vant": "^4.0.10",
+    "vue": "^3.2.45",
+    "vue-router": "^4.0.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}

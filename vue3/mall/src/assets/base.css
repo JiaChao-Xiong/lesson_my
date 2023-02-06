@@ -1,0 +1,37 @@
+/* 所有元素及他们的伪元素
+    css reset
+*/
+/* css 变量 复用和管理  */
+:root {
+    --vt-c-white:#ffffff;
+    --vt-c-indigo:#2c3e50;
+    --vt-c-text-light-1: var(--vt-c-indigo);
+    --color-text: var(--vt-c-text-light-1);
+    --color-background: var(--vt-c-white);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;/* 盒模型的计算方式 IE盒模型 移动端 */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    /* 苹果手机字体 -apple-system*/
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+        Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    /* 高分辨手机 文字边缘有模糊，抗锯齿 */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
