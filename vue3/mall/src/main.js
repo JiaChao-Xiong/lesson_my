@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import {
-    Swipe
+    Swipe,
+    SwipeItem
 } from 'vant'
 import 'vant/lib/index.css'
 import './assets/main.css' // reset
@@ -16,6 +17,7 @@ import router from './router' // 启用路由
 const app = createApp(App)
 app
     .use(Swipe)
+    .use(SwipeItem)
     .use(router) // 当我们在做SPA 路由接管一切  pages -> 组件
 app
     .mount('#app')
