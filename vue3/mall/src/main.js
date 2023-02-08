@@ -2,7 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import {
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Skeleton,
+    Lazyload
 } from 'vant'
 import 'vant/lib/index.css'
 import './assets/main.css' // reset
@@ -18,6 +20,23 @@ const app = createApp(App)
 app
     .use(Swipe)
     .use(SwipeItem)
+    .use(Skeleton)
+    .use(Lazyload)
     .use(router) // 当我们在做SPA 路由接管一切  pages -> 组件
+// vue 过滤器
+app
+    .config
+    .globalProperties
+    .$filters = {
+        prefix(url) {
+           if(url && url.startsWith('http')) {
+            return url
+           } else {
+            url = `http://backend-api-01.newbee.ltd${url}`
+            return url
+           }
+        }
+    }
+
 app
     .mount('#app')

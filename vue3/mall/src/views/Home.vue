@@ -18,22 +18,64 @@
         </header>
         <nav-bar />
         <swiper :list="state.swiperList"/>
-        <div class="category-list">
+        <section class="category-list">
             <div v-for="item in state.categoryList" :key="item.categoryId">
                 <img :src="item.imgUrl" alt="">
                 <span>{{ item.name }}</span>
             </div>
-        </div>
+        </section>
+        <section class="goods">
+          <header class="goods-header">新品上线</header>
+          <van-skeleton title :row="3" :loading="state.loading">
+            <!-- slot 插槽 -->
+            <div class="goods-box">
+              <goods-item 
+                v-for="item in state.newGoodses" 
+                :key="item.goodsId"  
+                @click="gotoDetail(item.goodsId)"
+                :goods="item"/>
+            </div>
+          </van-skeleton>
+        </section>
+        <section class="goods">
+          <header class="goods-header">热销商品</header>
+          <van-skeleton title :row="3" :loading="state.loading">
+            <!-- slot 插槽 -->
+            <div class="goods-box">
+              <goods-item 
+                v-for="item in state.hotGoodses" 
+                :key="item.goodsId"  
+                @click="gotoDetail(item.goodsId)"
+                :goods="item"/>
+            </div>
+          </van-skeleton>
+        </section>
+        <section class="goods">
+          <header class="goods-header">推荐商品</header>
+          <van-skeleton title :row="3" :loading="state.loading">
+            <!-- slot 插槽 -->
+            <div class="goods-box">
+              <goods-item 
+                v-for="item in state.recommendGoodses" 
+                :key="item.goodsId"  
+                @click="gotoDetail(item.goodsId)"
+                :goods="item"/>
+            </div>
+          </van-skeleton>
+        </section>
     </div>
 </template>
 
 <script setup>
 import { onMounted, reactive } from 'vue';
+import {  useRouter } from 'vue-router'
 import { getHomeData } from '../service/home'
 import { showLoadingToast, closeToast } from 'vant';
 import NavBar from '~/NavBar.vue'
 import Swiper from '~/Swiper.vue'
+import GoodsItem from '~/GoodsItem.vue'
 
+const router = useRouter() // 把全局对象给我们
 // import SubHeader from '../components/SubHeader.vue'
 // es8 异步的高级能力 async await
 // 挂载后再发送api请求，提升性能，不会去争抢挂载显示
@@ -43,6 +85,9 @@ import Swiper from '~/Swiper.vue'
 // 数据和组件1的状态是一一对应关系
 const state = reactive({
     swiperList: [],
+    newGoodses: [],
+    hotGoodses: [],
+    recommendGoodses: [],
     loading: true,
     categoryList: [
     {
@@ -88,6 +133,15 @@ const state = reactive({
     }
   ],
 })
+
+const gotoDetail = (id) => {
+  // /detail/:id
+  // console.log(id, 'gotoDeatils');
+  router.push({
+    path: `/detail/${id}`
+  })
+}
+
 onMounted(async() => {
     showLoadingToast({
         message: '加载中...',
@@ -95,7 +149,10 @@ onMounted(async() => {
     })
     const { data } = await getHomeData() // await  promise  api serverice
     console.log(data);
-    state.swiperList = data.data.carousels
+    state.swiperList = data.carousels
+    state.newGoodses = data.newGoodses
+    state.hotGoodses = data.hotGoodses
+    state.recommendGoodses = data.recommendGoodses
     state.loading = false
     closeToast()
     // console.log(state.swiperList);
@@ -106,8 +163,10 @@ onMounted(async() => {
 @import '../common/style/mixin'
 // 可以一次性设置widht height 的mixin 混合
 // stylus 提供的tab 缩进 css 提供了模块化的能力？  
+#home-wrapper
+    padding-bottom  2rem
 .home-header
-    position absolute
+    position fixed
     top 0
     left 0    
     line-height 1.33333rem
@@ -161,5 +220,17 @@ onMounted(async() => {
         img
             wh(.96rem, .96rem)
             margin .34667rem auto .213333rem auto
-
+.goods
+  .goods-header
+    background #f9f9f9
+    height 1.3333rem
+    line-height 1.333rem
+    text-align center
+    color $primary
+    font-size .426667rem
+    font-weight 500
+  .goods-box
+    fj(flex-start)
+    flex-wrap wrap
+    
 </style>

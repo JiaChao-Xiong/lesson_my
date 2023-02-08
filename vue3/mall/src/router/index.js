@@ -36,6 +36,12 @@ const router = createRouter({
             path: '/user',
             name: 'user',
             component: () => import('@/views/User.vue')
+        },
+        {
+            // 动态路由     url params  ?id=queryString
+            path: '/detail/:id',
+            name: 'detail',
+            component: () => import('@/views/Detail.vue')
         }
     ]
 })

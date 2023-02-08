@@ -1,6 +1,23 @@
 # 使用vue3写商场
 - 简历需要
 
+
+- vue3 语法
+    - 过滤器 filters  换了表现形式
+        computed data -> 计算
+        格式转化 进制转换 汇率 语言  
+        入口可以配置多个过滤器
+        app.config.globalProperties.$filters = {
+            prefix(url) {
+                if ()......
+            }
+        }
+
+- 设计模式
+    DRY  Dont repeat yourself
+    代码在复制重复的时候  停下来
+    组件 
+
 - 工程化 vite
     前端工程化  运行在服务器端 node
     .vue    style lang="stylus"    css 工程 stylus|less
@@ -13,6 +30,8 @@
     子组件和state 诞生依赖关系  热更新  
     components 组件 有利于 页面级组件或大组件更好维护，template比较简洁
     维护好数据状态  正确
+    - simple-header
+        noback  props 组件的复用和应用场景
 
 - 商城应用npm包
     - vant  有赞，移动商城组件库
@@ -103,3 +122,47 @@
             第三方框架 lib-flexible 
             Monile First 80%
             PC  工作 管理 后台
+
+- axios
+    - 接口请求里的顺丰
+        更专业
+        接口返回的数据，再包一层   更好及更标准的使用，更丰富的请求信息
+        http 了解更多
+        axios 把接口返回的数据放在data中
+    - 拦截器 interceptors
+        axios request/response
+        return res.data 
+
+- 骨架屏方案 用户体验优化
+    skeleton    vant 提供了这个组件
+    <van-skeleton :row="3" :loading="state.loading">
+        template 显示出来
+    </van-skeleton>
+
+- 图片懒加载
+    第一等  减少http请求数
+    - html 文件中 link src img script 启动新的http请求
+        公路一样有限制
+        请求并发数 越多的话 页面加载越慢
+    - 可视区内图片加载
+    - 非可视区内延迟加载，可视区滚动到哪里加载到哪
+    - vant 内置了Lazyload
+        vue directives  指令集 自定义指令 v-lazyload
+        命令组件或标签做相应的事情
+        更简单直观
+    - base64相较于png/jpg    更小    可放到css js 文件中 不需要png 而外的文件， 有效的减少了并发数
+
+- vue-router 细节考点
+    - 懒加载
+    - router-link 激活路由
+        .router-link-active
+    - 路由的跳转 
+        - 全局对象 Router vue-router  useRouter() 组件里随时拿到
+            push  go currentRoutr
+        - 当前路由  Router,currentRoute()
+            useRoute()  当前路由对象
+            route,params
+        - useRoute()  使用一下  hooks函数 编程
+            use开头函数的称呼
+            vue vue-router vuex .... useRoute  方便我们的使用， 函数的方式
+            composition api 结合的很好

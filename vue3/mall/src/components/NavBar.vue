@@ -42,6 +42,7 @@
         fj()
         padding 0
         .nav-list-item
+            display flex
             flex 1
             flex-direction column
             text-align center
