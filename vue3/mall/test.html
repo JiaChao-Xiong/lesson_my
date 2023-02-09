@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo04</title>
+    <style>
+        /* transtion 生命周期一样  */
+        .v-enter-from, .v-leave-to{
+            opacity: 0;
+        }
+        .v-enter-to, .v-leave-from{
+            opacity: 1;
+        }
+        .v-enter-active, .v-leave-active{
+            transition: opacity 3s ease-out;
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.0.2/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data(){
+            return {
+                isShow:false
+            }
+        },
+        methods:{
+            hanldClick(){
+                this.isShow = ! this.isShow
+            }
+        },
+        template: `  
+        <transition>
+            <div v-if="isShow">技术胖讲程序</div>
+        </transition>
+        <button @click="hanldClick">切换动画</button>
+
+        `
+    })
+    const vm = app.mount("#app")
+</script>
+</html>

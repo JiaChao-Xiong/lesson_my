@@ -15,11 +15,17 @@ const router = createRouter({
         {
             path: '/home',
             name: 'home',
+            meta: {
+                index: 1
+            },
             component: Home
         },
         {
             path: '/category',
             name: 'category',
+            meta: {
+                index: 1
+            },
             component: () => import('@/views/Category.vue')
         },
         {
@@ -30,17 +36,26 @@ const router = createRouter({
         {
             path: '/cart',
             name: 'cart',
+            meta: {
+                index: 1
+            },
             component: () => import('@/views/Cart.vue')
         },
         {
             path: '/user',
             name: 'user',
+            meta: {
+                index: 1
+            },
             component: () => import('@/views/User.vue')
         },
         {
             // 动态路由     url params  ?id=queryString
             path: '/detail/:id',
             name: 'detail',
+            meta: {
+                index: 3
+            },
             component: () => import('@/views/Detail.vue')
         }
     ]
