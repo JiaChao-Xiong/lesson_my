@@ -1,0 +1,6 @@
+<view class='recommend'>
+  <view class='header'>商品推荐</view>
+  <view class='content'>
+    <w-goods goodslist="{{recommends}}"/>
+  </view>
+</view>

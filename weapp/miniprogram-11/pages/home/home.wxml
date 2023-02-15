@@ -1,0 +1,43 @@
+<!-- 每个页面不同点 home -->
+<view class='home'>
+  <view hidden='{{!showTabControl}}'>
+    <!-- 不是 小程序的内置组件， 自定义组件  
+      内置组件不满足需求， 复用 
+     -->
+    <!-- titles 属性 ， page 和组件之间通过 属性传递 
+      提升组件的定制能力 抽象
+    -->
+    <w-tab-control class='tab-control-temp' 
+                
+                 titles="{{titles}}" 
+                 bind:tabclick="tabClick"
+    />
+  </view>
+  <!-- bindscrolltolower 滚动到底部加载
+    scroll-top  0  回到顶部
+   -->
+  <scroll-view class='content' 
+    scroll-y 
+    style="height: 100vh;"
+    bindscrolltolower="loadMore"
+    scroll-with-animation="true"
+    scroll-top="{{topPosition}}"
+    bindscroll="scrollPosition">
+    <!-- banners swiper  广告位  专为业务而来-->
+    <w-swiper images="{{banners}}"/>
+    <w-recommend recommends="{{recommends}}"/>
+    <!-- 本周流行 -->
+    <w-feature /> 
+   <!-- tab -->
+    <w-tab-control class="tab-control" titles="{{titles}}"
+      bind:tabclick="tabClick"
+    />
+
+    <w-goods goodslist="{{goods[currentType].list}}"/>
+    <!-- 商品列表 -->
+    <!-- <w-goods /> -->
+    <!-- 返回到顶部 -->
+    <w-back-top bindtap="onBackTop" wx:if="{{showBackTop}}" ></w-back-top>
+    
+  </scroll-view>
+</view>

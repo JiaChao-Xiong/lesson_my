@@ -1,0 +1,10 @@
+.back-top {
+  position: fixed;
+  right: 16rpx;
+  bottom: 10rpx;
+}
+
+.back-top image {
+  width: 90rpx;
+  height: 90rpx;
+}

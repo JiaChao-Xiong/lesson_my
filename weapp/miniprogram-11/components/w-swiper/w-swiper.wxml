@@ -1,0 +1,14 @@
+<!-- dot 颜色可以配置 -->
+<swiper indicator-dots='true' 
+        indicator-active-color='#ff5777'
+        autoplay='true'
+        circular='true'
+        interval='3000'
+        class='swiper'>
+  <block wx:for="{{images}}" wx:key="index">
+    <swiper-item>
+      <!-- image mode  图片填充模式   宽度 -->
+      <image class="swiper-image" src="{{item}}" mode='widthFix'/>
+    </swiper-item>
+  </block>
+</swiper>

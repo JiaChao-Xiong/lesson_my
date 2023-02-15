@@ -1,0 +1,15 @@
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 8rpx;
+}
+
+.goods > .goods-item {
+  position: relative;
+}
+
+.goods > .goods-item {
+  width: 48%;
+  margin-top: 20rpx;
+}

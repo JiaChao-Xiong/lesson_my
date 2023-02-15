@@ -1,0 +1,13 @@
+<!--components/w-tab-control/w-tab-control.wxml-->
+<!-- <text></text> -->
+<!-- 把页面的一部分， 作为组件拎出来做， 组件 复用 -->
+<view class='tab-control'>
+  <block wx:for="{{titles}}" wx:key="index">
+    <!-- 组件里 事件 bind:tap   事件函数 放在method -->
+    <view class='tab-item {{index == currentIndex?"active": ""}}'
+          bind:tap="itemClick" 
+          data-index="{{index}}">
+      <text>{{item}}</text>
+    </view>
+  </block>
+</view>
