@@ -1,11 +1,17 @@
 <template>
     <div>
-        Introduce
+        Add
     </div>
 </template>
 
-<script setup>
+<script>
+export default {
+    setup () {
+        
 
+        return {}
+    }
+}
 </script>
 
 <style lang="stylus" scoped>
