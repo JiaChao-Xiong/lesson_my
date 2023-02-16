@@ -8,5 +8,9 @@ export const getPageTitle = (pathName) => {
 }
 
 export const getLocal = (name) => {
-    return localStorage.getItem(name) || ''
+    return JSON.parse(localStorage.getItem(name))
+}
+// h5 提供的本地key-value存储
+export const setLocal = (key, val) => {
+    localStorage.setItem(key, JSON.stringify(val))
 }

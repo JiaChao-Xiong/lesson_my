@@ -66,3 +66,45 @@
             el-input v-model="state.formData.username"
     - ref="loginForm"
         el-form 组件也是对象  这个对象上的方法    
+
+- vue 登录
+    1. 选择何种登录方案
+        cookie(不安全)  jwd  token(主流)
+        服务器端签发  有效期，域名限制
+        前端在axios接口请求中默认带上请求头
+        axios.defaults.headers['token'] = getLocal('token') || ''
+
+    2. vue-router app.vue 全局
+        路由守卫 getLocal + require login -> login
+
+    3. 头像及昵称这些信息？
+        - /profile  API  登录  {name: ,age: ,avatar: }
+
+- 用户信息 数据 页面显示的各种需求
+    1. 当前组件请求，当年组件显示，私有状态
+    onMoumted async -> await api axios -> state reactive -> bind 自动更新
+    2. 共享用户信息，怎么办?
+        - pinia 托管一下 数据中央处理
+            全家桶老三 pinia  银行 共享数据
+        - localStorage
+
+- pinia 的使用流程  财务 更专业的管理共享状态 store 
+    1. 小型项目没有必要
+    2. 全家桶中的数据管理，难
+        - main.js 入口文件 use() 启用createPinia()
+        - user.js  用户状态模块
+            const useUserStore = defineStore('user', () => {
+                const profile = {}
+                const setProfile = () => {
+
+                }
+                return  {
+                    状态的初始值
+                    修改这个状态的方法   走正规流程
+                }
+            })
+        - 使用共享状态的地方
+            useUserStore();
+            读这个状态 userStore.profile
+            写这个状态？ userStore.profile = {....} NO
+                setProfile() ....
