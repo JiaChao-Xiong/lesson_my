@@ -9,41 +9,34 @@
     <HomeSwipe/>
     <!-- 视频组件 容器组件-->
     <HomeVideoList/>
+    <!-- 底部导航 -->
+    <NavBar/>
   </div>
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue'
+import { onMounted } from 'vue'
+import { getSwiperList, getVideosList } from '@/service/home.js'
 import AppHeader from '@/components/AppHeader.vue'
 import HomeChannel from '@/components/HomeChannel.vue'
 import HomeSwipe from '@/components/HomeSwipe.vue'
 import HomeVideoList from '@/components/HomeVideoList.vue'
+import  NavBar from '@/components/NavBar.vue';
 import axios from 'axios'
-import { useProductsStore } from '@/store/products.js'
-import { useHomeStore } from '@/store/home.js'
-// vuex 区别 只是products 模块
-const productsStore = useProductsStore(); // 本地到中央的联系
-const products = computed(() => productsStore.all)
 
-const homeStore = useHomeStore(); // 本地到中央的联系
-const swiperList = computed(() => homeStore.swiperList)
-const videosList = computed(() => homeStore.videosList)
-onMounted(async () => {
-    await productsStore.loadAllProducts()
-    console.log(productsStore.all);
-    await homeStore.getSwiperList()
-    console.log(homeStore.swiperList,'111');
-    await homeStore.getVideosList()
-    console.log(homeStore.videosList,'2222');
-})
-
-// onMounted(() => {
-//   fetch('/swiperList')
-//     // .then(response => response.json())
-//     .then(data => {
-//       console.log(data);
-//     })
+// onMounted(async () => {
+//     const swiperData = await getSwiperList()
+//     console.log(swiperData);
+//     const videosListData = await getVideosList()
 // })
+
+onMounted(() => {
+  fetch('/swiperList')
+    // .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+})
 // // onMounted(() => {
 // //   axios({
 // //     url: '/swiperList',
