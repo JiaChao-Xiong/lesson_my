@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="pic" id="file">
+    <script>
+        const eleFile = document.querySelector('#file');
+        const reader = new FileReader(); // io 读文件
+        let file = null;
+        const img = new Image();
+        // 订阅者 
+        eleFile.addEventListener('change', function(event) {
+            // console.log('aaa');
+            file = event.target.files[0];
+            console.log(file);
+            if(file.type.indexOf("image") == 0) {
+                reader.readAsDataURL(file) // 压缩 内存 耗时， 异步
+            }
+        })
+        // 事件监听 读入完成
+        reader.onload = function(e) {
+            // console.log(e.target.result);
+            img.src = e.target.result;
+            document.body.appendChild(img);
+        }
+    </script>
+</body>
+</html>
