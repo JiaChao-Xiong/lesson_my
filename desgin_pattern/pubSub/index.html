@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 如何实现订阅发布者关系而努力 -->
+    <script>
+        // 楼盘 发布者
+        // 买房 订阅者
+        const saleOffice = {
+            name: '万科海上传奇',
+            clientList: {
+                // '89': [],
+                // '120': []
+            } // 慢慢加入订阅者
+        } // 售楼部
+        // saleOffice.listen = function(fn) {
+        //     this.clientList.push(fn);
+        // } 
+        saleOffice.listen = function(key, fn) {
+            if (!this.clientList[key]) { // 没有这个分组
+                this.clientList[key] = [] // 初始化
+            }
+            this.clientList[key].push(fn) // 订阅的分组功能
+        }
+        // saleOffice.trigger = function() {
+        //     for (let i = 0; i < this.clientList.length; i++){
+        //         let client = this.clientList[i];
+        //         client.apply(this, arguments)
+        //         console.log(this, '///');
+        //     }
+        // }
+        saleOffice.trigger = function() {
+            const key = Array.prototype.shift.call(arguments); // key,arguments 数据
+            const fns = this.clientList[key];
+            if (!fns || fns.length ===0 ) {
+                return false
+            }
+            for(let i = 0; i < fns.length; i++) {
+                let fn = fns[i];
+                fn.apply(this, arguments)
+            }
+        }
+
+        // 关注楼盘 listen 监听
+        saleOffice.listen('squareMeter89', function(price, squareMeter) {
+            console.log(this.name,'???');
+            console.log('价格=' + price);
+            console.log('squareMeter=' + squareMeter);
+        })
+        
+        saleOffice.listen('squareMeter89', function(price, squareMeter) {
+            console.log(this.name,'???');
+            console.log('价格=' + price);
+            console.log('squareMeter=' + squareMeter);
+        })
+        
+        saleOffice.listen('squareMeter142', function(price, squareMeter) {
+            console.log(this.name,'???');
+            console.log('价格=' + price);
+            console.log('squareMeter=' + squareMeter);
+        })
+        // saleOffice.trigger('squareMeter142', 12000, 89)
+        saleOffice.trigger('squareMeter89', 12000, 89)
+        // console.log(saleOffice.clientList);
+    </script>
+</body>
+</html>
