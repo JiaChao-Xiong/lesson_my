@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- html5 画布 -->
+<canvas id="canvas"></canvas>
+<script src="./index.js"></script>
+<script>
+// // 找到画布元素
+// const  canvas = document.getElementById('canvas')
+// // 在html里的盒子大小
+// canvas.style.width = 400 + 'px'
+// canvas.style.height = 200 + 'px';
+// // 绘制区域的大小
+// canvas.width = 400;
+// canvas.height = 200;
+// // 图形上下文
+// const context = canvas.getContext('2d'); // 平面绘制 
+// console.log(context, '////')
+// // // 绘制API 吧？ 
+// // context.fillStyle = 'red'; // 沾了红色的颜料 填充色
+// // context.strokeStyle = 'yellow' // 描边使用的颜色
+// // context.lineWidth = 10; // 边宽 10
+// // context.strokeRect(0, 0, 100, 100); // rect 正方形 
+// // context.fillRect(5, 5, 95, 95)
+
+// // context.fillStyle = 'black'
+// // context.font = '25px sans-serif'
+// // context.fillText('hello world', 150, 100)
+
+// context.fillStyle = "red";
+// context.fillRect(0, 0, 50, 50);
+
+// context.fillStyle = "blue";
+// context.translate(50, 50);
+// context.rotate(-Math.PI / 6);
+// context.scale(2, 3)
+// context.fillRect(0, 0, 50, 50);
+const canvas = document.getElementById('canvas'); // 找到画布
+canvas.style.width = containerWidth + "px"
+canvas.style.height = containerHeight + "px";
+// 清晰度 
+canvas.width = containerWidth * 2;
+canvas.height = containerHeight * 2;
+
+const context = canvas.getContext('2d'); // 绘制的句柄
+context.scale(2, 2); //  抵消将画布宽高设置为样式宽高两倍的影响
+
+context.translate(margin, margin); // 0 0 -> 左上角 
+
+for (const index of indices) {
+    const color = colors[index]
+    const x = xs[index];
+    const barHeight = barHeights[index];
+    const value = values[index];
+
+    context.fillStyle = color; // 
+    context.fillRect(x, y - barHeight, barWidth, barHeight);
+
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.fillStyle = "white";
+    context.font = "25px sans-serif";
+    context.fillText(value, x + barWidth / 2, y - barHeight / 2 )
+
+}
+</script> 
+</body>
+</html>
