@@ -14,7 +14,8 @@ import {
     ElFormItem,
     ElInput,
     ElButton,
-    ElCheckbox
+    ElCheckbox,
+    ElCard
 } from 'element-plus'
 import 'element-plus/dist/index.css'
 import { createPinia } from 'pinia'
@@ -40,4 +41,5 @@ app
     .use(ElInput)
     .use(ElButton)
     .use(ElCheckbox)
+    .use(ElCard)
     .mount('#app') //挂载
