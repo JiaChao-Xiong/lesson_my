@@ -23,3 +23,16 @@
 - 绘制API canvas
 - canvas 是画出来的 像素
 - SVG 数学图形声明出来的, 无限拉伸
+    声明式
+
+- 为什么vue 不用DOM 编程
+    太耗性能
+    浏览器的原理相关
+    页面渲染 html/css
+    js 执行由另外的进程负责管理
+
+- svg canvas
+    数据简单，SVG更加简单 缺点是性能不好，频繁的操作DOM，svg 依托标签来完成功能
+    canvas 绘图API更丰富 GPU 负责 性能较好 适合大数据
+
+    API有点多，底层有点多?  echarts--封装好的库

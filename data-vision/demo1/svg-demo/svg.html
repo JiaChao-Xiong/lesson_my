@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg id="container-svg"></svg>
+    <script src="./index.js"></script>
+    <script>
+    // svg  xml 标签
+    // 动态数据进入svg DOM 编程
+    // 封装了动态生成svg 绘制标签的功能
+    function createSVGElement(type) {
+        return document.createElementNS("http://www.w3.org/2000/svg", type);
+    }
+
+    const svg = document.getElementById('container-svg');
+    svg.setAttribute('width', containerWidth)
+    svg.setAttribute('height', containerHeight)
+    svg.setAttribute('viewBox', [0, 0, containerWidth, containerHeight])
+
+    const g = createSVGElement('g');
+    g.setAttribute('transform', `translate(${margin}, ${margin})`)
+    svg.appendChild(g)
+    
+    for (const index of indices) {
+        const color = colors[index]; // 颜色
+        const x = xs[index] // x坐标
+        const barHeight = barHeights[index] 
+        const value = values[index]
+
+        const rect = createSVGElement('rect');
+        rect.setAttribute('x', x)
+        rect.setAttribute('y', y - barHeight)
+        rect.setAttribute('fill', color)
+        rect.setAttribute('width', barWidth)
+        rect.setAttribute('height', barHeight)
+        g.appendChild(rect)
+
+        const text = createSVGElement('text')
+        text.textContent = value
+        text.setAttribute('text-anchor', 'middle')
+        text.setAttribute('fill', 'white')
+        text.setAttribute('font-family', 'sans-serif')
+        text.setAttribute('font-size', 25)
+        text.setAttribute('alignment-baseline', "middle")
+        text.setAttribute('x', x + barWidth / 2)
+        text.setAttribute('y', y - barHeight / 2)
+
+        g.appendChild(text)
+    }
+    </script>
+</body>
+</html>
