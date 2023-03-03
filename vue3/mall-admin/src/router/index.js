@@ -14,6 +14,11 @@ const router = createRouter({
             component: () => import('@/views/Introduce.vue')
         },
         {
+            path: '/login',
+            name: 'login',
+            component: () => import('@/views/Login.vue')
+        },
+        {
             path: '/add',
             name: 'add',
             meta: {
@@ -22,12 +27,7 @@ const router = createRouter({
             component: () => import('@/views/Add.vue')
         },
         {
-            path: '/login',
-            name: 'login',
-            component: () => import('@/views/Login.vue')
-        },
-        {
-            path: '/swiper',
+            path:'/swiper',
             name: 'swiper',
             meta: {
                 login: true

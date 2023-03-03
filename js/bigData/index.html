@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="container"></ul>
+    <script>
+        // 浏览器 多线程  !=JS
+        // v8 引擎 JS
+        // 渲染工作线程
+        
+        let now = Date.now()
+        const total = 100000
+        let ul = document.getElementById('container') // js 内存里
+        for (let i = 0; i < total; i++) { // 蛮耗时的
+            // 爆栈
+            let li = document.createElement('li') // 消耗内存 v8
+            li.innerText = Math.floor(Math.random() * total) // 内存中
+            ul.appendChild(li)
+        }
+        console.log('JS运行时间', Date.now() - now);
+        setTimeout(() => {
+            console.log('总运行时间',Date.now() - now);
+        },0)
+    </script>
+</body>
+</html>

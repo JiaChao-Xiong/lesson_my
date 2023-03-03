@@ -1,7 +1,7 @@
 <template>
-    <div>
-        Introduce
-    </div>
+  <div>
+      Introduce
+  </div>
 </template>
 
 <script setup>
