@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <input type="text" class="inp">
+        <button class="btn-send">发送</button>
+    </div>
+    <ul class="message"></ul>
+    <script>
+        window.onload = function() {
+            let ws = null
+            let inp = document.querySelector('.inp')
+            let ulEle = document.querySelector('.message')
+            let msgData = {
+                fromUserId: Math.ceil(Math.random()*10000),
+                content: ''
+            }
+            function connectWebsocket() {
+                ws = new WebSocket('ws://localhost:3000') // ws://
+                ws.onopen = () => {
+                    console.log('连接服务器WebSocket成功');
+                    console.log(ws);
+                }
+                ws.onmessage = async (evt) => {
+                    console.log(evt.data.toString());
+                    var reader = new FileReader() // 文件读取对象 二进制流
+                    reader.onloadend = function() {
+                        ulEle.innerHTML += `
+                        <li class='b'>${evt.data.size}</li>
+                    `
+                    }
+                    reader.readAsText(evt.data)
+                }
+            }
+            connectWebsocket()
+            document.querySelector('.btn-send').addEventListener('click', () => {
+                let msg = {
+                    ...msgData,
+                    content: inp.value,
+                    type: 'text'
+                }
+                ws.send(JSON.stringify(msg)) // 发送给服务器
+                inp.value = ''
+            })
+        }
+    </script>
+</body>
+</html>
